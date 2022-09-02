@@ -11,7 +11,12 @@
     "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
     "@material-ui/lab": "^4.0.0-alpha.61",
+    "@mui/icons-material": "^5.10.3",
+    "@mui/lab": "^5.0.0-alpha.97",
+    "@mui/material": "^5.10.3",
     "material-ui-search-bar": "^1.0.0",
     "react-accessible-accordion": "^5.0.0",
     "react-select": "^5.4.0"

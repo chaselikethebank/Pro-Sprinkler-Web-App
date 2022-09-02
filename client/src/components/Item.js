@@ -11,8 +11,8 @@ function Item() {
      <Box m={1} pt={1} align="left" sx={{ fontFamily: 'Arial', textTransform: 'uppercase', fontWeight: 'bold', fontOpticalSizing: 'auto'  }}>
       <ul>
         <li>
-          <a href={`${release.link}`}>
-            {release.cat} // {release.name} // {release.title}
+          <a href={`${null}`}>
+            {/* {title} */}
           </a>
         </li>
       </ul>
