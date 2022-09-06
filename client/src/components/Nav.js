@@ -20,20 +20,21 @@ import MenuList from "@mui/material/MenuList";
 import Stack from "@mui/material/Stack";
 import { Button } from "@mui/material";
 
+
 function Nav({ onAddressChange }) {
   const [address, setAddress] = useState(null);
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [location, setLocation] = useState(null)
+  const [location, setLocation] = useState("");
 
-  const handleOnChange = (passData) => {
-    passData.preventDefault();
-    setAddress(passData);
-    onAddressChange(passData);
-  };
+  // const handleOnChange = (passData) => {
+  //   passData.preventDefault();
+  //   setAddress(passData);
+  //   onAddressChange(passData);
+  // };
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  function handleSearch(e) {
+   
     console.log(e.target.value);
     // setLocation(e.target.value);
 
@@ -62,7 +63,7 @@ function Nav({ onAddressChange }) {
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
-    console.log("clicked")
+    console.log("clicked");
   };
 
   const handleClose = (event) => {
@@ -144,58 +145,51 @@ function Nav({ onAddressChange }) {
             aria-label="open drawer"
             sx={{ mr: 2 }}
             onClick={handleToggle}
-
           >
-            
             <MenuIcon
-                  ref={anchorRef}
-                  id="composition-button"
-                  aria-controls={open ? "composition-menu" : undefined}
-                  aria-expanded={open ? "true" : undefined}
-                  aria-haspopup="true"
-                >
-                  Dashboard
-                <Popper
-                  open={open}
-                  anchorEl={anchorRef.current}
-                  role={undefined}
-                  placement="bottom-start"
-                  transition
-                  disablePortal
-                >
-                  {({ TransitionProps, placement }) => (
-                    <Grow
-                      {...TransitionProps}
-                      style={{
-                        transformOrigin:
-                          placement === "bottom-start"
-                            ? "left top"
-                            : "left bottom",
-                      }}
-                    >
-                      <Paper>
-                        <ClickAwayListener onClickAway={handleClose}>
-                          <MenuList
-                            autoFocusItem={open}
-                            id="composition-menu"
-                            aria-labelledby="composition-button"
-                            onKeyDown={handleListKeyDown}
-                          >
-                            <MenuItem onClick={handleClose}>Profile</MenuItem>
-                            <MenuItem onClick={handleClose}>
-                              My account
-                            </MenuItem>
-                            <MenuItem onClick={handleClose}>Logout</MenuItem>
-                          </MenuList>
-                        </ClickAwayListener>
-                      </Paper>
-                    </Grow>
-                  )}
-                </Popper>
-              
+              ref={anchorRef}
+              id="composition-button"
+              aria-controls={open ? "composition-menu" : undefined}
+              aria-expanded={open ? "true" : undefined}
+              aria-haspopup="true"
+            >
+              Dashboard
+              <Popper
+                open={open}
+                anchorEl={anchorRef.current}
+                role={undefined}
+                placement="bottom-start"
+                transition
+                disablePortal
+              >
+                {({ TransitionProps, placement }) => (
+                  <Grow
+                    {...TransitionProps}
+                    style={{
+                      transformOrigin:
+                        placement === "bottom-start"
+                          ? "left top"
+                          : "left bottom",
+                    }}
+                  >
+                    <Paper>
+                      <ClickAwayListener onClickAway={handleClose}>
+                        <MenuList
+                          autoFocusItem={open}
+                          id="composition-menu"
+                          aria-labelledby="composition-button"
+                          onKeyDown={handleListKeyDown}
+                        >
+                          <MenuItem onClick={handleClose}>Profile</MenuItem>
+                          <MenuItem onClick={handleClose}>My account</MenuItem>
+                          <MenuItem onClick={handleClose}>Logout</MenuItem>
+                        </MenuList>
+                      </ClickAwayListener>
+                    </Paper>
+                  </Grow>
+                )}
+              </Popper>
             </MenuIcon>
-          
-
           </IconButton>
           <Typography
             variant="h6"
@@ -205,16 +199,15 @@ function Nav({ onAddressChange }) {
           >
             Pro Sprinkler
           </Typography>
-          <Search>
+          {/* <Search onChange={handleSearch} name="city">
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
               placeholder="City..."
               inputProps={{ "aria-label": "search" }}
-              onChange={handleSubmit}
             />
-          </Search>
+          </Search> */}
         </Toolbar>
       </AppBar>
     </Box>

@@ -5,6 +5,10 @@ import CssVarsProvider from "@material-ui/lab";
 import Sheet from "@material-ui/lab";
 import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
 
 function Login() {
   return (

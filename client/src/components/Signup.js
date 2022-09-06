@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
 import Login from './Login'
 
+
 function Signup() {
 
 
@@ -34,13 +35,13 @@ function Signup() {
       <Typography variant="h6" sx={{ color: "gray" }}>
         <div>Let's get started with your free trial.</div>
       </Typography>
-      <TextField
+      {/* <TextField
         label="Street Address"
         placeholder="Type in here..."
         varient="soft"
         required
         helperText="2794 Willow Dr."
-      ></TextField>
+      ></TextField> */}
       <TextField
         label="City"
         placeholder="Type in here..."
@@ -55,13 +56,13 @@ function Signup() {
         required
         helperText="77345"
       ></TextField>
-      <TextField
+      {/* <TextField
         label="State"
         placeholder="Type in here..."
         varient="soft"
         required
         helperText="Tx"
-      ></TextField>
+      ></TextField> */}
       <TextField
         label="Email"
         placeholder="Type in here..."
