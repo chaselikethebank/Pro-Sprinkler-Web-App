@@ -5,11 +5,17 @@ import CssVarsProvider from "@material-ui/lab";
 import Sheet from "@material-ui/lab";
 import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
-import Login from './Login'
+import Login from "./Login";
+import Link from "@mui/material/Link";
 
-
-function Signup() {
-
+export default function Signup({ setUser }) {
+  function handleLogoutClick() {
+    fetch("/logout", { method: "DELETE" }).then((r) => {
+      if (r.ok) {
+        setUser(null);
+      }
+    });
+  }
 
   return (
     <Box
@@ -42,7 +48,7 @@ function Signup() {
         required
         helperText="2794 Willow Dr."
       ></TextField> */}
-      <TextField
+      {/* <TextField
         label="City"
         placeholder="Type in here..."
         varient="soft"
@@ -55,7 +61,7 @@ function Signup() {
         varient="soft"
         required
         helperText="77345"
-      ></TextField>
+      ></TextField> */}
       {/* <TextField
         label="State"
         placeholder="Type in here..."
@@ -80,23 +86,27 @@ function Signup() {
 
       {/* </CssVarsProvider>     */}
       <div>
-            <Typography align="center">
-              <Button
-                sx={{
-                  mt: 1,
-                }}
-              >
-                Create account
-              </Button>
-            </Typography>
-          </div>
-          <div>
-            <Typography align="center" level="body2">
-              Already have an account? <a href={<Login />}>Login</a>
-            </Typography>
-          </div>
+        <Typography align="center">
+          <Button
+            sx={{
+              mt: 1,
+            }}
+          >
+            Create account
+          </Button>
+        </Typography>
+      </div>
+      <div>
+        <Typography align="center" level="body2">
+          Already have an account?
+          <Button>
+            {" "}
+            <Link to={`/Login`}>Login</Link>
+          </Button>
+          {/* <a href={<Login />}>Login</a> */}
+        </Typography>
+      </div>
     </Box>
   );
 }
 
-export default Signup;

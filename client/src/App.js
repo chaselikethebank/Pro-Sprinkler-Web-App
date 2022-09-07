@@ -90,10 +90,10 @@ function App() {
       // onAddressChange={handleAddressChange} 
       />
        {/* <Time /> */}
-      <Location />
+      {/* <Location /> */}
       {/* {renderForecast} */}
       {/* <Login /> */}
-      {/* <Signup /> */}
+      <Signup />
       <ETAndCycle />
       {/* <Schedule /> */}
     </div>
