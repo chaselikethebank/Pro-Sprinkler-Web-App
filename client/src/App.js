@@ -9,6 +9,7 @@ import Nav from "./components/Nav";
 import Signup from "./components/Signup";
 import Schedule from "./components/Schedule";
 import Historical from "./components/Historical";
+import Time from "./components/Time";
 
 function App() {
   const [local, setLocal] = useState(["Kingwood", "77345"])
@@ -84,10 +85,12 @@ function App() {
   // };
   return (
     <div className="main">
+     
       <Main 
       // onAddressChange={handleAddressChange} 
       />
-      {/* <Location /> */}
+       {/* <Time /> */}
+      <Location />
       {/* {renderForecast} */}
       {/* <Login /> */}
       {/* <Signup /> */}

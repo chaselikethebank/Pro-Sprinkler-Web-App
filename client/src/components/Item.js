@@ -1,19 +1,15 @@
 import React from "react";
 
-function Item() {
+function some() {
 
-  const handleAddressChange = (passData) => {
-    console.log(passData)
-  }
 
   return (
-    <div className="main">
+    <div className="">
      <Box m={1} pt={1} align="left" sx={{ fontFamily: 'Arial', textTransform: 'uppercase', fontWeight: 'bold', fontOpticalSizing: 'auto'  }}>
       <ul>
         <li>
-          <a href={`${null}`}>
-            {/* {title} */}
-          </a>
+       
+          
         </li>
       </ul>
     </Box>
@@ -21,4 +17,4 @@ function Item() {
   );
 }
 
-export default Item;
+export default some;
