@@ -2,8 +2,9 @@
 import React from "react";
 import { Box } from "@mui/system";
 import { useState, useEffect } from "react";
+import Schedule from "./Schedule";
 
-function Historical() {
+function ETAndCycle() {
   const APIET = "www.google.com";
   const APIKey =
     "OTc0MDk4N2VjN2FhNDZhMTkyYzhiMDFmNWIzMDlhNDU6ODVjYWM1ZWMtMWVhNi00NjdhLTkzZGYtMzdlZjdmYzNkYmYx";
@@ -21,7 +22,7 @@ function Historical() {
     setMonthETState(thisMonthsET[0][1])
   }
   useEffect(setET, [])
-  console.log(monthETState)
+  // console.log(monthETState)
 
   // function getET() {
   //   fetch((APIET),
@@ -80,19 +81,17 @@ function Historical() {
     }
   
   const ETsAsArray = Object.entries(ETPerMonthInHouston)
-  console.log(ETsAsArray)
+  // console.log(ETsAsArray)
   const filter = ETsAsArray.filter(([key, value]) => typeof value === 'string')
   // console.log(filter)
 
   let thisMonthsET = ETsAsArray.filter((item) => {
     let currentMonth = monthsAsStrings[d.getMonth()];
-    console.log(item[0])
-    console.log(currentMonth)
+    // console.log(item[0])
+    // console.log(currentMonth)
     return item[0].toLowerCase().includes(currentMonth.toLowerCase());
   });
-
-
-  console.log((thisMonthsET[0][1]));
+  // console.log((thisMonthsET[0][1]));
 
   return (
     <div className="historical">
@@ -120,9 +119,59 @@ function Historical() {
             run all spray zones @ {spray} minutes / cycle
           </li>
         </ul>
+        Your pro sprinkler schedule for August has 4 watering events per week:
+      
+
+      <ul>
+      <br></br>
+      <p></p>
+      <p>
+        <li>
+        Monday: Water @ Sunrise 
+        </li>
+      </p>
+      <p>
+        <li>
+        Tuesday: Non-Event
+        </li>
+      </p>
+      <p>
+        <li>
+        Wednesday: Water @ Sunrise 
+        </li>
+      </p>
+      <p>
+        <li>
+        Thursday: Non-Event
+        </li>
+      </p>
+      <p>
+        <li>
+        Friday: Water @ Sunrise 
+        </li>
+      </p>
+      <p>
+        <li>
+        Sunday: Water @ Sunrise
+        </li>
+      </p>
+      </ul>
+      <p></p>
+      <p></p>
+      <br></br>
+      <p>
+        Set all Rotor Zones to: 15 minutes
+      </p>
+      <p>
+        Set all Spray Zones to: 7 minutes
+      </p>
+      <p>
+        OR set your seasonal adjustment to 95%
+      </p>
+        {/* <Schedule /> */}
       </Box>
     </div>
   );
 }
 
-export default Historical;
+export default ETAndCycle;

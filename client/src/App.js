@@ -8,7 +8,7 @@ import Login from "./components/Login";
 import Nav from "./components/Nav";
 import Signup from "./components/Signup";
 import Schedule from "./components/Schedule";
-import Historical from "./components/Historical";
+import ETAndCycle from "./components/ETAndCycle";
 import Time from "./components/Time";
 
 function App() {
@@ -94,8 +94,8 @@ function App() {
       {/* {renderForecast} */}
       {/* <Login /> */}
       {/* <Signup /> */}
-      <Historical />
-      <Schedule />
+      <ETAndCycle />
+      {/* <Schedule /> */}
     </div>
   );
 }
