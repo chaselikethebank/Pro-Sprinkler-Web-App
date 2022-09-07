@@ -9,9 +9,58 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import { useState, useEffect } from 'react';
+import Nav from "./Nav";
 
-function Login() {
+function Login({ onLogin }) {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [errors, setErrors] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  console.log({username}, {password})
+
+  function handleLogin(e) {
+    e.preventDefault();
+    setIsLoading(true);
+    fetch("http://localhost:3000/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    }).then((r) => {
+      setIsLoading(false);
+      if (r.ok) {
+        r.json().then((user) => onLogin(user));
+      } else {
+        r.json().then((err) => setErrors(err.errors));
+      }
+    });
+  }
+
+
+  function handleLogin(e) {
+    e.preventDefault();
+    setIsLoading(true);
+    fetch("http://localhost:3000/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    }).then((r) => {
+      setIsLoading(false);
+      if (r.ok) {
+        r.json().then((user) => onLogin(user));
+      } else {
+        r.json().then((err) => setErrors(err.errors));
+      }
+    });
+  }
+
   return (
+    <Box>      <Nav />
     <Box
       sx={{
         maxWidth: 350,
@@ -35,6 +84,8 @@ function Login() {
         varient="soft"
         required
         helperText="JohnWaterfall@gmail.com"
+        onChange={(e) => setUsername(e.target.value)}
+
       ></TextField>
       <TextField
         label="Password"
@@ -58,6 +109,8 @@ function Login() {
       </div>
       <div></div>
     </Box>
+    </Box>
+
   );
 }
 

@@ -73,7 +73,18 @@ function App() {
     <Forecast local={local} key={forecast.id} forecast={forecast} temp={temp}/>
   ));
 
-// search
+const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // auto-login
+    fetch("/me").then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
+
+  if (!user) return <Login onLogin={setUser} />
 
 
 
@@ -85,7 +96,7 @@ function App() {
   // };
   return (
     <div className="main">
-     
+     {/* <Nav /> */}
       <Main 
       // onAddressChange={handleAddressChange} 
       />
@@ -93,7 +104,7 @@ function App() {
       {/* <Location /> */}
       {/* {renderForecast} */}
       {/* <Login /> */}
-      <Signup />
+      <Signup onLogin={setUser}/>
       <ETAndCycle />
       {/* <Schedule /> */}
     </div>

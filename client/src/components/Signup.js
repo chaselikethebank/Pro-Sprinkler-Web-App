@@ -7,12 +7,40 @@ import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
 import Login from "./Login";
 import Link from "@mui/material/Link";
+import { useState, useEffect } from 'react';
 
-export default function Signup({ setUser }) {
-  function handleLogoutClick() {
-    fetch("/logout", { method: "DELETE" }).then((r) => {
+
+export default function Signup({ setUser, onLogin }) {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [errors, setErrors] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  console.log({username}, {password})
+
+
+
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    setErrors([]);
+    setIsLoading(true);
+    fetch("http://localhost:3000/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        password,
+        password_confirmation: passwordConfirmation,
+      }),
+    }).then((r) => {
+      setIsLoading(false);
       if (r.ok) {
-        setUser(null);
+        r.json().then((username) => onLogin(username));
+      } else {
+        r.json().then((err) => setErrors(err.errors));
       }
     });
   }
@@ -109,4 +137,3 @@ export default function Signup({ setUser }) {
     </Box>
   );
 }
-
