@@ -5,39 +5,20 @@ import CssVarsProvider from "@material-ui/lab";
 import Sheet from "@material-ui/lab";
 import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import { useState, useEffect } from 'react';
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import { useState, useEffect } from "react";
 import Nav from "./Nav";
 
 function Login({ onLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  // const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  console.log({username}, {password})
-
-  function handleLogin(e) {
-    e.preventDefault();
-    setIsLoading(true);
-    fetch("http://localhost:3000/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username, password }),
-    }).then((r) => {
-      setIsLoading(false);
-      if (r.ok) {
-        r.json().then((user) => onLogin(user));
-      } else {
-        r.json().then((err) => setErrors(err.errors));
-      }
-    });
-  }
+  console.log({ username }, { password });
 
 
   function handleLogin(e) {
@@ -57,60 +38,67 @@ function Login({ onLogin }) {
         r.json().then((err) => setErrors(err.errors));
       }
     });
+    setPassword('')
+    setUsername('')
   }
 
   return (
-    <Box>      <Nav />
-    <Box
-      sx={{
-        maxWidth: 350,
-        mx: "auto",
-        my: 20,
-        mb: 15,
-        py: 3,
-        px: 2,
-        display: "grid",
-        display: "flex",
-        flexDirection: "column",
-        flexWrap: "wrap",
-        gap: 4,
-        borderRadius: "sm",
-        boxShadow: "sm",
-      }}
-    >
-      <TextField
-        label="Email"
-        placeholder="Type in here..."
-        varient="soft"
-        required
-        helperText="JohnWaterfall@gmail.com"
-        onChange={(e) => setUsername(e.target.value)}
+    <Box>
+      {" "}
+      <Nav />
+      <Box
+        sx={{
+          maxWidth: 350,
+          mx: "auto",
+          my: 20,
+          mb: 15,
+          py: 3,
+          px: 2,
+          display: "grid",
+          display: "flex",
+          flexDirection: "column",
+          flexWrap: "wrap",
+          gap: 4,
+          borderRadius: "sm",
+          boxShadow: "sm",
+        }}
+      >
+        <TextField
+          label="Email"
+          placeholder="Type in here..."
+          varient="soft"
+          required
+          helperText="JohnWaterfall@gmail.com"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        ></TextField>
+        <TextField
+          label="Password"
+          placeholder="Type in here..."
+          varient="soft"
+          required
+          helperText="Grass1s@lways$er"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          autoComplete="current-password"
+        ></TextField>
 
-      ></TextField>
-      <TextField
-        label="Password"
-        placeholder="Type in here..."
-        varient="soft"
-        required
-        helperText="Grass1s@lways$er"
-      ></TextField>
-
-      {/* </CssVarsProvider>     */}
-      <div>
-        <Typography align="center">
-          <Button 
-            sx={{
-              mt: 1,
-            }}
-          >
-            Login{" "}
-          </Button>
-        </Typography>
-      </div>
-      <div></div>
+        {/* </CssVarsProvider>     */}
+        <div>
+          <Typography align="center">
+            <Button
+              sx={{
+                mt: 1,
+              }}
+              onClick={handleLogin}
+            >
+              Login{" "}
+            </Button>
+          </Typography>
+        </div>
+        <div></div>
+      </Box>
     </Box>
-    </Box>
-
   );
 }
 

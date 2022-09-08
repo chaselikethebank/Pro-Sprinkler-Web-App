@@ -12,13 +12,15 @@ import ETAndCycle from "./components/ETAndCycle";
 import Time from "./components/Time";
 
 function App() {
-  const [local, setLocal] = useState(["Kingwood", "77345"])
+  const [local, setLocal] = useState(["Kingwood", "77345"]);
   const [forecast, setForecast] = useState([]);
   const [temp, setTemp] = useState([]);
   const [latLon, setLatLon] = useState([]);
-  const [lat, setLat] = useState([latLon.latitude])
-  const [lon, setLon] = useState([latLon.longitude])
-  const [APIKeyForecast, setAPIKeyForecast] = useState("00abd67100886d6a01f4694628c12152")
+  const [lat, setLat] = useState([latLon.latitude]);
+  const [lon, setLon] = useState([latLon.longitude]);
+  const [APIKeyForecast, setAPIKeyForecast] = useState(
+    "00abd67100886d6a01f4694628c12152"
+  );
 
   // let shortLat = Math.round((latLon.lattitude) * 100) / 100
   // console.log(shortLat)
@@ -26,8 +28,6 @@ function App() {
   // constol.log(latLon.latitude)
   // console.log(lat)
   // console.log(lon)
-
-  
 
   function getCord() {
     fetch(
@@ -51,8 +51,8 @@ function App() {
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?lat=29&lon=-95&appid=${APIKeyForecast}&units=imperial`
     )
-    .then((res) =>res.json())
-    .then((data) => setForecast(data.weather))
+      .then((res) => res.json())
+      .then((data) => setForecast(data.weather));
   }
   useEffect(getForecast, []);
   // console.log(forecast)
@@ -61,19 +61,17 @@ function App() {
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?lat=29.64&lon=-95.28&appid=${APIKeyForecast}&units=imperial`
     )
-    .then((res) =>res.json())
-    .then((data) => setTemp(data))
+      .then((res) => res.json())
+      .then((data) => setTemp(data));
   }
   useEffect(getTemp, []);
   // console.log(temp)
 
-  
-
   const renderForecast = forecast.map((weather) => (
-    <Forecast local={local} key={forecast.id} forecast={forecast} temp={temp}/>
+    <Forecast local={local} key={forecast.id} forecast={forecast} temp={temp} />
   ));
 
-const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     // auto-login
@@ -84,27 +82,22 @@ const [user, setUser] = useState(null);
     });
   }, []);
 
-  if (!user) return <Login onLogin={setUser} />
-
-
-
-
-
+  if (!user) return <Login onLogin={setUser} />;
 
   // const handleAddressChange = (passData) => {
   //   console.log(passData);
   // };
   return (
     <div className="main">
-     {/* <Nav /> */}
-      <Main 
-      // onAddressChange={handleAddressChange} 
+      {/* <Nav /> */}
+      <Main
+      // onAddressChange={handleAddressChange}
       />
-       {/* <Time /> */}
+      {/* <Time /> */}
       {/* <Location /> */}
       {/* {renderForecast} */}
       {/* <Login /> */}
-      <Signup onLogin={setUser}/>
+      <Signup onLogin={setUser} />
       <ETAndCycle />
       {/* <Schedule /> */}
     </div>
