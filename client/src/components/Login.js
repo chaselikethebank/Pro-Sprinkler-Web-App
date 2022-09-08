@@ -93,7 +93,8 @@ function Login({ onLogin }) {
               onClick={handleLogin}
             >
               Login{" "}
-            </Button>
+            </Button><p></p>
+            {errors}
           </Typography>
         </div>
         <div></div>

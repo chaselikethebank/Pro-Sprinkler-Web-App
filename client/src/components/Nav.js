@@ -153,7 +153,7 @@ function Nav({ onAddressChange }) {
               aria-expanded={open ? "true" : undefined}
               aria-haspopup="true"
             >
-              Dashboard
+              
               <Popper
                 open={open}
                 anchorEl={anchorRef.current}
@@ -180,8 +180,8 @@ function Nav({ onAddressChange }) {
                           aria-labelledby="composition-button"
                           onKeyDown={handleListKeyDown}
                         >
-                          <MenuItem onClick={handleClose}>Profile</MenuItem>
-                          <MenuItem onClick={handleClose}>My account</MenuItem>
+                          <MenuItem onClick={handleClose}>My Schedule</MenuItem>
+                          <MenuItem onClick={handleClose}>Settings</MenuItem>
                           <MenuItem onClick={handleClose}>Logout</MenuItem>
                         </MenuList>
                       </ClickAwayListener>

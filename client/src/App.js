@@ -10,6 +10,7 @@ import Signup from "./components/Signup";
 import Schedule from "./components/Schedule";
 import ETAndCycle from "./components/ETAndCycle";
 import Time from "./components/Time";
+import Disclaimer from "./components/Disclaimer";
 
 function App() {
   const [local, setLocal] = useState(["Kingwood", "77345"]);
@@ -82,7 +83,7 @@ function App() {
     });
   }, []);
 
-  if (!user) return <Login onLogin={setUser} />;
+  if (!user) return <Signup onLogin={setUser} />;
 
   // const handleAddressChange = (passData) => {
   //   console.log(passData);
@@ -97,9 +98,10 @@ function App() {
       {/* <Location /> */}
       {/* {renderForecast} */}
       {/* <Login /> */}
-      <Signup onLogin={setUser} />
+      {/* <Signup onLogin={setUser} /> */}
       <ETAndCycle />
       {/* <Schedule /> */}
+      <Disclaimer />
     </div>
   );
 }

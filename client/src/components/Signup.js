@@ -8,15 +8,16 @@ import { Button } from "@mui/material";
 import Login from "./Login";
 import Link from "@mui/material/Link";
 import { useState, useEffect } from 'react';
+import Disclaimer from "./Disclaimer";
 
 
 export default function Signup({ setUser, onLogin }) {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  console.log({username}, {password})
+  console.log({email}, {password})
 
 
 
@@ -31,14 +32,14 @@ export default function Signup({ setUser, onLogin }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username,
+        email,
         password,
-        password_confirmation: passwordConfirmation,
+        // password_confirmation: passwordConfirmation,
       }),
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((username) => onLogin(username));
+        r.json().then((email) => onLogin(email));
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
@@ -56,6 +57,7 @@ export default function Signup({ setUser, onLogin }) {
         px: 2,
         display: "grid",
         display: "flex",
+        align: "center",
         flexDirection: "column",
         flexWrap: "wrap",
         gap: 4,
@@ -67,7 +69,7 @@ export default function Signup({ setUser, onLogin }) {
         <div>Create an account</div>
       </Typography>
       <Typography variant="h6" sx={{ color: "gray" }}>
-        <div>Let's get started with your free trial.</div>
+        <div>Welcome to the Pro-Sprinkler app</div>
       </Typography>
       {/* <TextField
         label="Street Address"
@@ -134,6 +136,7 @@ export default function Signup({ setUser, onLogin }) {
           {/* <a href={<Login />}>Login</a> */}
         </Typography>
       </div>
+      <Disclaimer />
     </Box>
   );
 }
