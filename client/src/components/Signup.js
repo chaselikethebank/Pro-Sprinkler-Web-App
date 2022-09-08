@@ -7,9 +7,8 @@ import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
 import Login from "./Login";
 import Link from "@mui/material/Link";
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import Disclaimer from "./Disclaimer";
-
 
 export default function Signup({ setUser, onLogin }) {
   const [email, setEmail] = useState("");
@@ -17,10 +16,7 @@ export default function Signup({ setUser, onLogin }) {
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  console.log({email}, {password})
-
-
-
+  console.log({ email }, { password });
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -44,6 +40,8 @@ export default function Signup({ setUser, onLogin }) {
         r.json().then((err) => setErrors(err.errors));
       }
     });
+    setPassword('')
+    setEmail('')
   }
 
   return (
@@ -69,7 +67,7 @@ export default function Signup({ setUser, onLogin }) {
         <div>Create an account</div>
       </Typography>
       <Typography variant="h6" sx={{ color: "gray" }}>
-        <div>Welcome to the Pro-Sprinkler app</div>
+        <div>Welcome to your Pro-Sprinkler app</div>
       </Typography>
       {/* <TextField
         label="Street Address"
@@ -105,6 +103,8 @@ export default function Signup({ setUser, onLogin }) {
         varient="soft"
         required
         helperText="JohnWaterfall@gmail.com"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
       ></TextField>
       <TextField
         label="Password"
@@ -112,6 +112,9 @@ export default function Signup({ setUser, onLogin }) {
         varient="soft"
         required
         helperText="Grass1s@lways$er"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        autoComplete="current-password"
       ></TextField>
 
       {/* </CssVarsProvider>     */}
@@ -121,6 +124,7 @@ export default function Signup({ setUser, onLogin }) {
             sx={{
               mt: 1,
             }}
+            onClick={handleSubmit}
           >
             Create account
           </Button>
