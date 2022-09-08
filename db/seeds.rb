@@ -7,6 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts "🍕 seeding user..."
-u1 = User.create(email: 'JohnWaterfall@gmail.com', password_digest: 'Grass1s@lways$er')
+u1 = User.create!(email: 'JohnWaterfall@gmail.com', password: 'Grass1s@lways$er')
 
 puts "🍕 Users toast..."

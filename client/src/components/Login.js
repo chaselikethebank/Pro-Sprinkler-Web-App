@@ -13,12 +13,12 @@ import { useState, useEffect } from "react";
 import Nav from "./Nav";
 
 function Login({ onLogin }) {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  console.log({ username }, { password });
+  console.log({ email }, { password });
 
 
   function handleLogin(e) {
@@ -29,7 +29,7 @@ function Login({ onLogin }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ email, password }),
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
@@ -39,7 +39,7 @@ function Login({ onLogin }) {
       }
     });
     setPassword('')
-    setUsername('')
+    setEmail('')
   }
 
   return (
@@ -69,8 +69,8 @@ function Login({ onLogin }) {
           varient="soft"
           required
           helperText="JohnWaterfall@gmail.com"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         ></TextField>
         <TextField
           label="Password"
