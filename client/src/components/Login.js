@@ -45,7 +45,7 @@ function Login({ onLogin }) {
   return (
     <Box>
       {" "}
-      <Nav />
+      {/* <Nav /> */}
       <Box
         sx={{
           maxWidth: 350,

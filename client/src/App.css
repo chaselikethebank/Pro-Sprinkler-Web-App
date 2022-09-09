@@ -8,3 +8,14 @@
 ul{
   list-style-type:none;
   }
+
+  img{
+  
+    width: 500px;
+    height: 294px;
+    /* resizeMode: 'contain'; */
+  }
+
+  .image{ 
+    justify-content: center;
+  }

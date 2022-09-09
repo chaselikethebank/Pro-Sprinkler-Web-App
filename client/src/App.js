@@ -5,7 +5,7 @@ import Forecast from "./components/Forecast";
 import { useState, useEffect } from "react";
 // import { Routes, Route } from 'react-router-dom';
 import Login from "./components/Login";
-import Nav from "./components/Nav";
+// import Nav from "./components/Nav";
 import Signup from "./components/Signup";
 import Schedule from "./components/Schedule";
 import ETAndCycle from "./components/ETAndCycle";
@@ -22,6 +22,8 @@ function App() {
   const [APIKeyForecast, setAPIKeyForecast] = useState(
     "00abd67100886d6a01f4694628c12152"
   );
+  const [user, setUser] = useState(null);
+
 
   // let shortLat = Math.round((latLon.lattitude) * 100) / 100
   // console.log(shortLat)
@@ -72,7 +74,6 @@ function App() {
     <Forecast local={local} key={forecast.id} forecast={forecast} temp={temp} />
   ));
 
-  const [user, setUser] = useState(null);
 
   useEffect(() => {
     // auto-login
@@ -91,9 +92,9 @@ function App() {
   return (
     <div className="main">
       {/* <Nav /> */}
-      <Main
-      // onAddressChange={handleAddressChange}
-      />
+      {/* <Main */}
+      {/* // onAddressChange={handleAddressChange} */}
+      {/* /> */}
       {/* <Time /> */}
       {/* <Location /> */}
       {/* {renderForecast} */}
