@@ -29,7 +29,7 @@ function Disclaimer(props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
+      <Typography variant="h6" sx={{ my: 0 }}>
         Pro-Sprinkler
       </Typography>
       <Divider />
@@ -98,9 +98,7 @@ function Disclaimer(props) {
       <Box component="main"  sx={{ p: 3 }}>
         <Toolbar />
         <Box sx={{ p: 3 }}></Box>
-        <Typography variant="caption" align="center">
-        DISCLAIMER OF DAMAGES. <p></p> By signing up and/or loging in you agree that Pro-Sprinkler Web App will not be liable for any damages, loss in material, plant material, bills, fees, or fines and in perpetuity.      
-        </Typography>
+       
       </Box>
     </Box>
   );
