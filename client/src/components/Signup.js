@@ -8,7 +8,7 @@ import { Button } from "@mui/material";
 import Login from "./Login";
 import Link from "@mui/material/Link";
 import { useState, useEffect } from "react";
-import Disclaimer from "./Disclaimer";
+import Disclaimer from "./Navbar";
 import PSLogo from "./PSLogo.jpg";
 import "../App.css";
 
@@ -113,7 +113,7 @@ export default function Signup({ setUser, onLogin }) {
             <div>Signup</div>
           </Typography>
           <Typography variant="h6" sx={{ color: "gray" }}>
-            <div>Welcome to the Pro-Sprinkler app</div>
+            <div>Welcome to the Pro-Sprinkler Web App</div>
           </Typography>
           {/* <TextField
         label="Street Address"

@@ -19,7 +19,7 @@ import Button from '@mui/material/Button';
 const drawerWidth = 240;
 const navItems = ['My Schedule', 'Settings', 'Log Out'];
 
-function Disclaimer(props) {
+function Navbar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -104,7 +104,7 @@ function Disclaimer(props) {
   );
 }
 
-Disclaimer.propTypes = {
+Navbar.propTypes = {
   /**
    * Injected by the documentation to work in an iframe.
    * You won't need it on your project.
@@ -112,4 +112,4 @@ Disclaimer.propTypes = {
   window: PropTypes.func,
 };
 
-export default Disclaimer;
+export default Navbar;

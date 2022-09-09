@@ -10,7 +10,7 @@ import Signup from "./components/Signup";
 import Schedule from "./components/Schedule";
 import ETAndCycle from "./components/ETAndCycle";
 import Time from "./components/Time";
-import Disclaimer from "./components/Disclaimer";
+import Navbar from "./components/Navbar";
 
 function App() {
   const [local, setLocal] = useState(["Kingwood", "77345"]);
@@ -102,7 +102,7 @@ function App() {
       {/* <Signup onLogin={setUser} /> */}
       <ETAndCycle />
       {/* <Schedule /> */}
-      <Disclaimer />
+      <Navbar />
     </div>
   );
 }
