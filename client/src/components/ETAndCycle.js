@@ -22,14 +22,29 @@ function ETAndCycle() {
 
   const [monthETState, setMonthETState] = useState();
   // const [ET, setET] = useState(.9)
+  const [seasonal, setSeasonal] = useState(null)
+
   let monthET = monthETState; //inches
   let cropET = (monthET * 0.65).toFixed(2);
   let weekET = (cropET / 4.2).toFixed(2);
   let cyclesPerWeek = 4;
   let rotor = (((weekET / 0.625) * 60) / cyclesPerWeek).toFixed(0);
   let spray = (((weekET / 1.5) * 60) / cyclesPerWeek).toFixed(0);
-  const [seasonal, setSeasonal] = useState([])
 
+  console.log(seasonal)
+
+  useEffect(getSeasonal, [])
+  function getSeasonal () {
+    let big = ((Object.entries(ETPerMonthInHouston))[6][1])
+    console.log(big)
+    let small = (monthETState)
+    let seasonalMathLong = ((small)/(big)*100)
+    console.log(seasonalMathLong)
+    setSeasonal(roundNearest5(seasonalMathLong))
+    function roundNearest5(num) { 
+      return Math.round(num / 5) * 5;
+    }
+  }
 
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -43,7 +58,6 @@ function ETAndCycle() {
     setMonthETState(thisMonthsET[0][1]);
   }
   useEffect(setET, []);
-  // console.log(monthETState)
 
   // function getET() {
   //   fetch((APIET),
@@ -101,7 +115,7 @@ function ETAndCycle() {
   };
 
   const ETsAsArray = Object.entries(ETPerMonthInHouston);
-  // console.log(ETsAsArray)
+  
   const filter = ETsAsArray.filter(([key, value]) => typeof value === "string");
   // console.log(filter)
 
@@ -112,6 +126,10 @@ function ETAndCycle() {
     return item[0].toLowerCase().includes(currentMonth.toLowerCase());
   });
   // console.log((thisMonthsET[0][1]));
+
+  //seasonal math
+  
+  
 
   const bull = (
     <Box
@@ -156,7 +174,7 @@ function ETAndCycle() {
             </Box>
             <Box align="center">
             <Typography m={3} sx={{ mb: 2 }} color="text.secondary">
-              Your Schedule:
+              {/* Your Schedule: */}
             </Typography>
             </Box>
             <Typography>
@@ -181,7 +199,10 @@ function ETAndCycle() {
                   sx={{ mb: 1 }}
                   color="text.secondary"
                 >
-                  * set seasonal adjustment to {}%
+                  
+                  * or seasonally adjust to {seasonal
+                  //  !== null ? {getSeasonal} : "75"
+                   }%
                 </Typography>
               </Box>
             </Typography>

@@ -18,7 +18,7 @@ import { Route, Routes, Link } from "react-router-dom"
 
 
 const drawerWidth = 240;
-const navItems = ["Logout"];
+const navItems = [ "Logout"];
 
 function Navbar(props) {
   const { window } = props;
@@ -49,6 +49,16 @@ function Navbar(props) {
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
+    function handleLogOutClick () {
+      console.log("click")
+      //   fetch("/logout", { method: "DELETE" }).then((r) => {
+      //     if (r.ok) {
+      //       setUser(null);
+      //     }
+      //   });
+      // }
+    }
+
   return (
     <Box sx={{ display: "flex" }}>
       <AppBar component="nav">
@@ -72,12 +82,7 @@ function Navbar(props) {
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
               <Button key={item} sx={{ color: "#fff" }}
-              // onClick={() => {
-              //   <Routes>
-              //   <Route path=`/${item}` element={<Logout />} />
-                
-              // </Routes>
-              // }}
+              onClick={handleLogOutClick} 
               >
                 {item}
               </Button>
