@@ -12,13 +12,14 @@ import Navbar from "./Navbar";
 import PSLogo from "./PSLogo.jpg";
 import "../App.css";
 
+
 export default function Signup({ setUser, onLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  console.log({ email }, { password });
+  // console.log({ email }, { password });
   const [isClicked, setIsClicked] = useState(true);
 
   function handleClick() {
@@ -80,6 +81,8 @@ export default function Signup({ setUser, onLogin }) {
     <div>
         <Box
           sx={{
+            my: 6,
+            mb: 2,
             display: 'flex',
             flexDirection: { xs: 'column', md: 'row' },
             alignItems: 'center',
@@ -102,7 +105,7 @@ export default function Signup({ setUser, onLogin }) {
             align: "center",
             flexDirection: "column",
             flexWrap: "wrap",
-            gap: 2,
+            gap: 4,
             borderRadius: "sm",
             boxShadow: "sm",
           }}
@@ -174,7 +177,12 @@ export default function Signup({ setUser, onLogin }) {
               </Button>
             </Typography>
           </div>
-          <div></div>
+          <div>
+          {/* <Typography variant="caption" align="center">
+        DISCLAIMER OF DAMAGES. <p></p> By signing up and/or loging in you agree that Pro-Sprinkler Web App will not be liable for any damages, loss in material, plant material, bills, fees, or fines and in perpetuity.      
+        </Typography> */}
+            
+          </div>
         </Box>
       </div>
 
@@ -194,7 +202,7 @@ export default function Signup({ setUser, onLogin }) {
             align: "center",
             flexDirection: "column",
             flexWrap: "wrap",
-            gap: 2,
+            gap: 4,
             borderRadius: "sm",
             boxShadow: "sm",
           }}
@@ -225,7 +233,10 @@ export default function Signup({ setUser, onLogin }) {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             autoComplete="current-password"
-          ></TextField>
+          
+          >
+
+          </TextField>
 
           {/* </CssVarsProvider>     */}
           <div>
@@ -271,10 +282,36 @@ export default function Signup({ setUser, onLogin }) {
         boxShadow: "sm",
       }}
       >
-      <Typography variant="caption" align="center">
-        DISCLAIMER OF DAMAGES. <p></p> By signing up and/or loging in you agree that Pro-Sprinkler Web App will not be liable for any damages, loss in material, plant material, bills, fees, or fines and in perpetuity.      
-        </Typography>
+      
         </Box>
     </div>
   );
 }
+
+
+
+
+
+//password "view"
+// import InputLabel from '@mui/material/InputLabel';
+// import InputAdornment from '@mui/material/InputAdornment';
+// import FormHelperText from '@mui/material/FormHelperText';
+// import FormControl from '@mui/material/FormControl';
+// import TextField from '@mui/material/TextField';
+// import Visibility from '@mui/icons-material/Visibility';
+// import VisibilityOff from '@mui/icons-material/VisibilityOff';
+
+
+
+  // endAdornment={
+            //   <InputAdornment position="end">
+            //     <IconButton
+            //       aria-label="toggle password visibility"
+            //       onClick={handleClickShowPassword}
+            //       onMouseDown={handleMouseDownPassword}
+            //       edge="end"
+            //     >
+            //       {values.showPassword ? <VisibilityOff /> : <Visibility />}
+            //     </IconButton>
+            //   </InputAdornment>
+            // }
