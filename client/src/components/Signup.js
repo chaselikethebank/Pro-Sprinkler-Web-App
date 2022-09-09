@@ -8,7 +8,7 @@ import { Button } from "@mui/material";
 import Login from "./Login";
 import Link from "@mui/material/Link";
 import { useState, useEffect } from "react";
-import Disclaimer from "./Navbar";
+import Navbar from "./Navbar";
 import PSLogo from "./PSLogo.jpg";
 import "../App.css";
 
@@ -78,18 +78,16 @@ export default function Signup({ setUser, onLogin }) {
   // };
   return (
     <div>
-      <div className="image">
         <Box
           sx={{
-            maxWidth: 525,
-            mx: "auto",
-            my: 7,
-            mb: 2,
+            display: 'flex',
+            flexDirection: { xs: 'column', md: 'row' },
+            alignItems: 'center',
           }}
         >
           <img src={PSLogo} />
         </Box>
-      </div>
+      
       <div style={isClicked ? { display: "none" } : { display: "flex" }}>
         <Box
           sx={{
@@ -104,7 +102,7 @@ export default function Signup({ setUser, onLogin }) {
             align: "center",
             flexDirection: "column",
             flexWrap: "wrap",
-            gap: 4,
+            gap: 2,
             borderRadius: "sm",
             boxShadow: "sm",
           }}
@@ -113,7 +111,7 @@ export default function Signup({ setUser, onLogin }) {
             <div>Signup</div>
           </Typography>
           <Typography variant="h6" sx={{ color: "gray" }}>
-            <div>Welcome to the Pro-Sprinkler Web App</div>
+            <div>Welcome to Pro-Sprinkler</div>
           </Typography>
           {/* <TextField
         label="Street Address"
@@ -196,17 +194,17 @@ export default function Signup({ setUser, onLogin }) {
             align: "center",
             flexDirection: "column",
             flexWrap: "wrap",
-            gap: 4,
+            gap: 2,
             borderRadius: "sm",
             boxShadow: "sm",
           }}
         >
           
           <Typography variant="h4" align="center" sx={{ color: "black" }}>
-            <div>Welcome Back</div>
+            <div>Hello Again</div>
           </Typography>
           <Typography variant="h6" sx={{ color: "gray" }}>
-            <div>Login to the Pro-Sprinkler Web App</div>
+            <div>Login to Pro-Sprinkler </div>
           </Typography>
 
           <TextField
@@ -235,6 +233,7 @@ export default function Signup({ setUser, onLogin }) {
               <Button
                 sx={{
                   mt: 1,
+                  mb: -2,
                 }}
                 onClick={handleLogin}
               >
@@ -248,19 +247,18 @@ export default function Signup({ setUser, onLogin }) {
         </Box>
       </div>
       {/* <button className="center" </button> */}
-      <Typography align="center" level="body2">
+      <Typography align="center" level="body2" sx={{mb: 8,}}>
         <Button onClick={handleClick}>
           {isClicked ? "I Need to create an account" : "I Already have an account"}
         </Button>
         {/* <a href={<Login />}>Login</a> */}
       </Typography>
-      <Disclaimer />
       <Box
       sx={{
         maxWidth: 350,
         mx: "auto",
         my: 2,
-        mb: -2,
+        mb: -8,
         py: 2,
         px: 5,
         display: "grid",
