@@ -16,10 +16,36 @@ import '../App.css';
 export default function Signup({ setUser, onLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  // const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   console.log({ email }, { password });
+  const [isClicked, setIsClicked] = useState(true)
+  
+  function handleClick(){
+    setIsClicked(isClicked=>!isClicked)
+  }
+
+  function handleLogin(e) {
+    e.preventDefault();
+    setIsLoading(true);
+    fetch("http://localhost:3000/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    }).then((r) => {
+      setIsLoading(false);
+      if (r.ok) {
+        r.json().then((user) => onLogin(user));
+      } else {
+        r.json().then((err) => setErrors(err.errors));
+      }
+    });
+    setPassword('')
+    setEmail('')
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -65,6 +91,7 @@ export default function Signup({ setUser, onLogin }) {
         src={PSLogo} />
         </Box>
       </div>
+      <div style={isClicked ? {display:'none'} : {display:'flex'}}> 
       <Box
         sx={{
           maxWidth: 350,
@@ -96,14 +123,14 @@ export default function Signup({ setUser, onLogin }) {
         required
         helperText="2794 Willow Dr."
       ></TextField> */}
-        {/* <TextField
+        <TextField
         label="City"
         placeholder="Type in here..."
         varient="soft"
         required
         helperText="Kingwood"
       ></TextField>
-      <TextField
+      {/* <TextField
         label="Zip"
         placeholder="Type in here..."
         varient="soft"
@@ -151,17 +178,83 @@ export default function Signup({ setUser, onLogin }) {
           </Typography>
         </div>
         <div>
-          <Typography align="center" level="body2">
-            Already have an account?
-            <Button>
-              {" "}
-              <Link to={`/Login`}>Login</Link>
+          
+        </div>
+      </Box>
+      </div> 
+
+
+
+
+      <div style={isClicked ? {display:'flex'} : {display:'none'}}>
+      
+      {" "}
+      {/* <Nav /> */}
+      
+      <Box
+        sx={{
+          maxWidth: 350,
+          mx: "auto",
+          my: 2,
+          mb: 2,
+          py: 2,
+          px: 5,
+          display: "grid",
+          display: "flex",
+          align: "center",
+          flexDirection: "column",
+          flexWrap: "wrap",
+          gap: 4,
+          borderRadius: "sm",
+          boxShadow: "sm",
+        }}
+      >
+        <TextField
+          label="Email"
+          placeholder="Type in here..."
+          varient="soft"
+          required
+          helperText="JohnWaterfall@gmail.com"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        ></TextField>
+        <TextField
+          label="Password"
+          placeholder="Type in here..."
+          varient="soft"
+          required
+          helperText="Grass1s@lways$er"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          autoComplete="current-password"
+        ></TextField>
+
+        {/* </CssVarsProvider>     */}
+        <div>
+          <Typography align="center">
+            <Button
+              sx={{
+                mt: 1,
+              }}
+              onClick={handleLogin}
+            >
+              Login{" "}
+            </Button><p></p>
+            {errors}
+          </Typography>
+        </div>
+        <div></div>
+      </Box>
+    </div>
+    {/* <button className="center" </button> */}
+    <Typography align="center" level="body2">
+    
+            <Button onClick={handleClick}>
+            {isClicked? 'Need to create an account?' : 'Already have an account'}
             </Button>
             {/* <a href={<Login />}>Login</a> */}
           </Typography>
-        </div>
-        <Disclaimer />
-      </Box>
+          <Disclaimer />
     </div>
   );
 }
