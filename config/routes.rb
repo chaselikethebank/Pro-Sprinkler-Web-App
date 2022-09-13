@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :cets
+  resources :cities
   resources :systems, only: [:index, :show, :create, :update, :destroy]
   resources :users
   # Routing logic: fallback requests for React Router.

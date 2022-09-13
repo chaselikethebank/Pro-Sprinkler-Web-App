@@ -84,7 +84,7 @@ function App() {
     });
   }, []);
 
-  if (!user) return <Signup onLogin={setUser} />;
+  // if (!user) return <Signup onLogin={setUser} />;
 
   // const handleAddressChange = (passData) => {
   //   console.log(passData);

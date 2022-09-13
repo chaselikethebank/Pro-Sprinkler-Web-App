@@ -10,10 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_06_204346) do
+ActiveRecord::Schema.define(version: 2022_09_13_161325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cets", force: :cascade do |t|
+    t.integer "January"
+    t.integer "February"
+    t.integer "March"
+    t.integer "April"
+    t.integer "May"
+    t.integer "June"
+    t.integer "July"
+    t.integer "August"
+    t.integer "September"
+    t.integer "October"
+    t.integer "November"
+    t.integer "December"
+    t.bigint "city_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["city_id"], name: "index_cets_on_city_id"
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string "name"
+    t.string "cet"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "systems", force: :cascade do |t|
     t.integer "zone"
@@ -27,9 +53,14 @@ ActiveRecord::Schema.define(version: 2022_09_06_204346) do
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
+    t.string "city"
+    t.bigint "city_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["city_id"], name: "index_users_on_city_id"
   end
 
+  add_foreign_key "cets", "cities"
   add_foreign_key "systems", "users"
+  add_foreign_key "users", "cities"
 end

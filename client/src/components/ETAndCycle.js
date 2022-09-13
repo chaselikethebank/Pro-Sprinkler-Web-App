@@ -14,6 +14,12 @@ import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 import InvertColorsIcon from "@mui/icons-material/InvertColors";
 import InvertColorsOffIcon from "@mui/icons-material/InvertColorsOff";
+import rotor from "./i-1.png"
+import rotorDark from "./i-2.png"
+import spray from "./j-3.png"
+import sprayDark from "./j-4.png"
+
+
 
 function ETAndCycle() {
   const APIET = "www.google.com";
@@ -112,7 +118,7 @@ function ETAndCycle() {
     October: 4.5,
     November: 2.2,
     December: 1.3,
-  };
+  }
 
   const ETsAsArray = Object.entries(ETPerMonthInHouston);
   
@@ -139,9 +145,11 @@ function ETAndCycle() {
       •
     </Box>
   );
-
+  console.log(rotor, rotorDark, spray, sprayDark)
   return (
+    
     <div className="historical">
+      
       <Box
         m={5}
         pt={5}
@@ -199,7 +207,7 @@ function ETAndCycle() {
                   sx={{ mb: 1 }}
                   color="text.secondary"
                 >
-                  
+                
                   * or seasonally adjust to {seasonal
                   //  !== null ? {getSeasonal} : "75"
                    }%

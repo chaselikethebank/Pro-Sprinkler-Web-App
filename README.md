@@ -325,3 +325,51 @@ For additional support, check out these guides on Heroku:
 [postgres downloads page]: https://postgresapp.com/downloads.html
 [heroku rails deploying guide]: https://devcenter.heroku.com/articles/getting-started-with-rails6
 [troubleshooting guide on heroku]: https://devcenter.heroku.com/articles/getting-started-with-rails6#troubleshooting
+
+
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
+#
+# Examples:
+#
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create(name: 'Luke', movie: movies.first)
+
+
+puts "🍕 seeding City ..."
+c1 = Ctiy.create!(name: 'Houston')
+c2 = Ctiy.create!(name: 'Austin')
+c3 = Ctiy.create!(name: 'San Antonio')
+c1 = Ctiy.create!(name: 'Dallas')
+c1 = Ctiy.create!(name: 'Forth Worth')
+puts "🍕 City ET toast"
+
+puts "🍕 seeding City ET..."
+HoustonET = CityET.create!(City_id: January: 1.0, February: 1.5, March: 2.8, April: 4.5, May: 6.5, June: 7.8, July: 8.2, August: 7.8, September: 6.0, October: 4.5, November: 2.2, December: 1.3)
+
+AustinET = CityET.create!(January: 0.7, February: 1, March: 1.5, April: 4, May: 5.5, June: 7, July: 7.5, August: 7, September: 5.0, October: 4, November: 2, December: 1)
+puts "🍕 City ET toast"
+
+puts "🍕 seeding User..."
+u1 = User.create!(email: 'JohnWaterfall@gmail.com', password: 'Grass1s@lways$er', city: 'Houston', city_id: c1 )
+puts "🍕 Users toast..."
+
+
+
+
+userCity 
+
+ET
+
+#city
+City has many Users
+City has many CityETs
+
+
+#user
+User belongs to City
+has many CityETs though City
+
+#cityET
+CityET belongs to City
+has many Users through City
