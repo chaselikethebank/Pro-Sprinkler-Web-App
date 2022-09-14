@@ -14,14 +14,22 @@ import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 import InvertColorsIcon from "@mui/icons-material/InvertColors";
 import InvertColorsOffIcon from "@mui/icons-material/InvertColorsOff";
-import rotor from "./i-1.png"
-import rotorDark from "./i-2.png"
-import spray from "./j-3.png"
-import sprayDark from "./j-4.png"
-
+import rotorIcon from "./i-1.png";
+import rotorDark from "./i-2.png";
+import sprayIcon from "./j-3.png";
+import sprayDark from "./j-4.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCoffee, faCalendar, faDroplet, faDropletSlash } from "@fortawesome/free-solid-svg-icons";
 
 
 function ETAndCycle() {
+
+  const calendar = <FontAwesomeIcon icon={faCalendar} />
+  const waterIcon = <FontAwesomeIcon icon={faDroplet} />
+  const waterSlashIcon = <FontAwesomeIcon icon={faDropletSlash} />
+  console.log(calendar)
+  const element = <FontAwesomeIcon icon={faCoffee} />
+
   const APIET = "www.google.com";
   const APIKey =
     "OTc0MDk4N2VjN2FhNDZhMTkyYzhiMDFmNWIzMDlhNDU6ODVjYWM1ZWMtMWVhNi00NjdhLTkzZGYtMzdlZjdmYzNkYmYx";
@@ -43,7 +51,7 @@ function ETAndCycle() {
   function getSeasonal () {
     let big = ((Object.entries(ETPerMonthInHouston))[6][1])
     console.log(big)
-    let small = (monthETState)
+    let small = thisMonthsET[0][1]
     let seasonalMathLong = ((small)/(big)*100)
     console.log(seasonalMathLong)
     setSeasonal(roundNearest5(seasonalMathLong))
@@ -161,28 +169,36 @@ function ETAndCycle() {
           fontOpticalSizing: "auto",
         }}
       >
-        <Card className="card" sx={{ minWidth: 275, maxWidth: "50%" }}>
+        <Card className="card" sx={{ minWidth: 295, maxWidth: "50%" }}>
           <CardContent>
             <Typography
               sx={{ fontSize: 14 }}
               color="text.secondary"
               gutterBottom
             >
-              {month}
+              {calendar} {month}
+
+              <FontAwesomeIcon icon="fa-duotone fa-calendar-week" />
             </Typography>
             <Typography variant="h5" component="div" sx={{ mb: 1.5 }}>
-              Houston
+              Houston               (get user city)
+
             </Typography>
-            <Box align="left">
-            <Typography variant="body2" sx={{ mb: 1 }} color="text.secondary">
-              Rotor zones @ {rotor} minutes
-              <p></p>
-              Spray zones @ {spray} minutes
-            </Typography>
+            <br></br>
+            <Box align="center">
+              <Typography variant="body" sx={{ mb: 1 }} >
+                <img src={rotorIcon} style={{ width: "auto", height: 105 }} />{" "}
+                Set rotor zones to {rotor} min per cycle
+                <p></p>
+                <img src={sprayIcon} style={{ width: "auto", height: 105 }} />
+                Set spray zones to {spray} min per cycle
+              </Typography>
             </Box>
             <Box align="center">
             <Typography m={3} sx={{ mb: 2 }} color="text.secondary">
               {/* Your Schedule: */}
+              <br></br>
+
             </Typography>
             </Box>
             <Typography>
@@ -192,13 +208,14 @@ function ETAndCycle() {
                 divider={<Divider orientation="horizontal" flexItem />}
                 spacing={2}
               >
-                <Item>Monday: Water icon</Item>
-                <Item>Tuesday: Not Water icon</Item>
-                <Item>Wednesday: Water icon</Item>
-                <Item>Thursday: Not Water icon</Item>
-                <Item>Friday: Water icon</Item>
-                <Item>Saturday: Not Water icon</Item>
-                <Item>Sunday: Water icon</Item>
+                 <Item>Monday: {waterIcon}</Item>
+                <Item>Tuesday: {waterSlashIcon}</Item>
+                <Item>Wednesday: {waterIcon}</Item>
+                <Item>Thursday: {waterSlashIcon}</Item>
+                <Item>Friday: {waterIcon}</Item>
+                <Item>Saturday: {waterSlashIcon}</Item>
+                <Item>Sunday:{waterIcon}</Item>
+
               </Stack>
               <Box align="center">
                 <Typography
