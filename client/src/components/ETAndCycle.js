@@ -21,14 +21,14 @@ import sprayIcon from "./j-3.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoffee, faCalendar, faDroplet, faDropletSlash } from "@fortawesome/free-solid-svg-icons";
 
-
-function ETAndCycle() {
+function ETAndCycle({user, sessionMonths}) { 
+console.log(sessionMonths)
 
   const calendar = <FontAwesomeIcon icon={faCalendar} />
   const waterIcon = <FontAwesomeIcon icon={faDroplet} />
   const waterSlashIcon = <FontAwesomeIcon icon={faDropletSlash} />
   const element = <FontAwesomeIcon icon={faCoffee} />
-
+  const seasonalLink = "https://www.youtube.com/watch?v=IjwJFnB6wj4"
   const APIET = "www.google.com";
   const APIKey =
     "OTc0MDk4N2VjN2FhNDZhMTkyYzhiMDFmNWIzMDlhNDU6ODVjYWM1ZWMtMWVhNi00NjdhLTkzZGYtMzdlZjdmYzNkYmYx";
@@ -209,7 +209,7 @@ function ETAndCycle() {
                   color="text.secondary"
                 >
                 
-                  * or seasonally adjust to {seasonal
+                  * or <a href={seasonalLink}>seasonally adjust</a> to {seasonal
                   //  !== null ? {getSeasonal} : "75"
                    }%
                 </Typography>

@@ -12,6 +12,7 @@ import ETAndCycle from "./components/ETAndCycle";
 // import Time from "./components/Time";
 import Navbar from "./components/Navbar";
 import { ListItem } from "@mui/material";
+import NewNav from "./components/NewNav";
 
 function App() {
   const [local, setLocal] = useState(["Kingwood", "77345"]);
@@ -83,32 +84,45 @@ function App() {
   useEffect(getCet, []);
 
   // useEffect(findCity, []);
-  const [sessionCity, setSessionCity] = useState([]);
+
+  const [sessionMonths, setSessionMonths] = useState([]);
 
   useEffect(() => {
-    // auto-login
     fetch("http://localhost:3000/me").then((r) => {
       if (r.ok) {
+        debugger
         r.json()
-          .then((user) => setUser(user))
-          .then(() => findCity);
+          // .then((user) => setUser(user))
+          .then(() => findCity())
+        .then(()=>console.log(user))
       }
     });
   }, []);
-  if (!user) return <Signup onLogin={setUser} />;
 
-  function findCity(user) {
+  useEffect(() => {
+findCity()
+  }, [user])
+
+  if (user===null) return <Signup onLogin={setUser} ETData={ETData}/>;
+
+  console.log(user);
+  function findCity() {
     console.log(user);
-    const usersCity = ETData.find((level) => level.city.name === user.city.name);
-    setSessionCity(usersCity);
+    const usersCity = ETData.find(
+      (level) => level.city.name === user.city.name
+    );
+    setSessionMonths(usersCity);
   }
   console.log(user);
-  console.log(sessionCity);
+  console.log(sessionMonths);
   console.log(user.city.name);
-  console.log(ETData[0].city.name);
+  console.log(ETData[10].city.name);
+  console.log(ETData)
 
   return (
     <div className="main">
+      <NewNav setUser={setUser}/>
+
       {/* <Nav /> */}
       {/* <Main */}
       {/* // onAddressChange={handleAddressChange} */}
@@ -118,9 +132,9 @@ function App() {
       {/* {renderForecast} */}
       {/* <Login /> */}
       {/* <Signup onLogin={setUser} /> */}
-      <ETAndCycle />
+      <ETAndCycle user={user} sessionMonths={sessionMonths}/>
       {/* <Schedule /> */}
-      <Navbar />
+      {/* <Navbar /> */}
     </div>
   );
 }

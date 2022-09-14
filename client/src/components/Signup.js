@@ -11,9 +11,13 @@ import { useState, useEffect } from "react";
 // import Navbar from "./Navbar";
 import PSLogo from "./PSLogo.jpg";
 import "../App.css";
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 
-export default function Signup({ setUser, onLogin }) {
+export default function Signup({ setUser, onLogin, ETData }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // const [passwordConfirmation, setPasswordConfirmation] = useState("");
@@ -21,6 +25,18 @@ export default function Signup({ setUser, onLogin }) {
   const [isLoading, setIsLoading] = useState(false);
   // console.log({ email }, { password });
   const [isClicked, setIsClicked] = useState(true);
+  const [formCity, setFormCity] =useState([])
+  const [city, setCity] = useState([])
+
+
+  console.log(ETData)
+ 
+
+  // function getListofPossibleCities (ETData) {
+  //   const {name, value} = ETData
+  //   setFormCity(formCity => ({...setFormCity, [name]:value}))
+  // }
+  // useEffect(getListofPossibleCities, [])
 
   function handleClick() {
     setIsClicked((isClicked) => !isClicked);
@@ -59,6 +75,7 @@ export default function Signup({ setUser, onLogin }) {
       body: JSON.stringify({
         email,
         password,
+        city
         // password_confirmation: passwordConfirmation,
       }),
     }).then((r) => {
@@ -71,6 +88,7 @@ export default function Signup({ setUser, onLogin }) {
     });
     setPassword("");
     setEmail("");
+    setCity("")
   }
 
   // const imgSize = {
@@ -123,13 +141,25 @@ export default function Signup({ setUser, onLogin }) {
         required
         helperText="2794 Willow Dr."
       ></TextField> */}
-          <TextField
+          {/* <TextField
             label="City"
             placeholder="Type in here..."
             varient="soft"
             required
             helperText="Kingwood"
-          ></TextField>
+          ></TextField> */}
+          <InputLabel id="demo-simple-select-label">City</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={city}
+          helperText="JohnWaterfall@gmail.com"
+          onChange={(e) => setCity(e.target.value)}
+        >
+          <MenuItem value={"Houston"}>Houston</MenuItem>
+          <MenuItem value={"Austin"}>Austin</MenuItem>
+          <MenuItem value={"Password"}>Dallas</MenuItem>
+        </Select>
           {/* <TextField
         label="Zip"
         placeholder="Type in here..."

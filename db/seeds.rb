@@ -40,19 +40,34 @@ puts "🍕 Cet toast"
 
 
 puts "🍕 seeding User..."
-u1 = User.create!(email: 'JohnWaterfall@gmail.com', password: 'Grass1s@lways$er', city: Houston)
-u2 = User.create!(email: 'JohnWaterfall2@gmail.com', password: 'Grass1s@lways$er', city: Amarillo)
-u3 = User.create!(email: 'JohnWaterfall3@gmail.com', password: 'Grass1s@lways$er', city: Abilene)
-u4 = User.create!(email: 'JohnWaterfall4@gmail.com', password: 'Grass1s@lways$er', city: Dallas)
-u5 = User.create!(email: 'JohnWaterfall5@gmail.com', password: 'Grass1s@lways$er', city: Fort_Worth)
-u7 = User.create!(email: 'JohnWaterfall6@gmail.com', password: 'Grass1s@lways$er', city: Bryan)
-u8 = User.create!(email: 'JohnWaterfall7@gmail.com', password: 'Grass1s@lways$er', city: College_Station)
-u9 = User.create!(email: 'JohnWaterfall8@gmail.com', password: 'Grass1s@lways$er', city: El_Paso)
-u10 = User.create!(email: 'JohnWaterfal9l@gmail.com', password: 'Grass1s@lways$er', city: San_Angelo)
-u11 = User.create!(email: 'JohnWaterfall10@gmail.com', password: 'Grass1s@lways$er', city: San_Antonio)
-u12 = User.create!(email: 'JohnWaterfall11@gmail.com', password: 'Grass1s@lways$er', city: Houston)
-u13 = User.create!(email: 'JohnWaterfall12@gmail.com', password: 'Grass1s@lways$er', city: Laredo)
-u14 = User.create!(email: 'JohnWaterfall13@gmail.com', password: 'Grass1s@lways$er', city: Austin)
+# u1 = User.create!(email: 'JohnWaterfall@gmail.com', password: 'Grass1s@lways$er', city: Houston)
+# u2 = User.create!(email: 'JohnWaterfall2@gmail.com', password: 'Grass1s@lways$er', city: Amarillo)
+# u3 = User.create!(email: 'JohnWaterfall3@gmail.com', password: 'Grass1s@lways$er', city: Abilene)
+# u4 = User.create!(email: 'JohnWaterfall4@gmail.com', password: 'Grass1s@lways$er', city: Dallas)
+# u5 = User.create!(email: 'JohnWaterfall5@gmail.com', password: 'Grass1s@lways$er', city: Fort_Worth)
+# u7 = User.create!(email: 'JohnWaterfall6@gmail.com', password: 'Grass1s@lways$er', city: Bryan)
+# u8 = User.create!(email: 'JohnWaterfall7@gmail.com', password: 'Grass1s@lways$er', city: College_Station)
+# u9 = User.create!(email: 'JohnWaterfall8@gmail.com', password: 'Grass1s@lways$er', city: El_Paso)
+# u10 = User.create!(email: 'JohnWaterfal9l@gmail.com', password: 'Grass1s@lways$er', city: San_Angelo)
+# u11 = User.create!(email: 'JohnWaterfall10@gmail.com', password: 'Grass1s@lways$er', city: San_Antonio)
+# u12 = User.create!(email: 'JohnWaterfall11@gmail.com', password: 'Grass1s@lways$er', city: Houston)
+# u13 = User.create!(email: 'JohnWaterfall12@gmail.com', password: 'Grass1s@lways$er', city: Laredo)
+# u14 = User.create!(email: 'JohnWaterfall13@gmail.com', password: 'Grass1s@lways$er', city: Austin)
+
+u1 = User.create!(email: 'JohnWaterfall@gmail.com', password: 'Grass1s@lways$er', city: Houston, userCity: "Houston")
+u2 = User.create!(email: 'JohnWaterfall2@gmail.com', password: 'Grass1s@lways$er', city: Amarillo, userCity: "Amarillo")
+u3 = User.create!(email: 'JohnWaterfall3@gmail.com', password: 'Grass1s@lways$er', city: Abilene, userCity: "Abilene")
+u4 = User.create!(email: 'JohnWaterfall4@gmail.com', password: 'Grass1s@lways$er', city: Dallas, userCity: "Dallas")
+u5 = User.create!(email: 'JohnWaterfall5@gmail.com', password: 'Grass1s@lways$er', city: Fort_Worth, userCity: "Fort_Worth")
+u7 = User.create!(email: 'JohnWaterfall6@gmail.com', password: 'Grass1s@lways$er', city: Bryan, userCity: "Bryan")
+u8 = User.create!(email: 'JohnWaterfall7@gmail.com', password: 'Grass1s@lways$er', city: College_Station, userCity: "College_Station")
+u9 = User.create!(email: 'JohnWaterfall8@gmail.com', password: 'Grass1s@lways$er', city: El_Paso, userCity: "El_Paso")
+u10 = User.create!(email: 'JohnWaterfal9l@gmail.com', password: 'Grass1s@lways$er', city: San_Angelo, userCity: "San_Angelo")
+u11 = User.create!(email: 'JohnWaterfall10@gmail.com', password: 'Grass1s@lways$er', city: San_Antonio, userCity: "San_Antonio")
+u12 = User.create!(email: 'JohnWaterfall11@gmail.com', password: 'Grass1s@lways$er', city: Houston, userCity: "Houston")
+u13 = User.create!(email: 'JohnWaterfall12@gmail.com', password: 'Grass1s@lways$er', city: Laredo, userCity: "Laredo")
+u14 = User.create!(email: 'JohnWaterfall13@gmail.com', password: 'Grass1s@lways$er', city: Austin, userCity: "Austin")
+
 
 puts "🍕 Users toast..."
 

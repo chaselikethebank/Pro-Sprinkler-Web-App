@@ -15,6 +15,8 @@ class SessionsController < ApplicationController
   
     # DELETE '/logout'
     def destroy
+      byebug
+      current_user = User.find_by(id: session[:user_id])
       if current_user
         session.clear
       else
