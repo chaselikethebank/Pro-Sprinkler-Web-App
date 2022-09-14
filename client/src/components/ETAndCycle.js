@@ -2,22 +2,22 @@
 import React from "react";
 import { Box } from "@mui/system";
 import { useState, useEffect } from "react";
-import Schedule from "./Schedule";
+// import Schedule from "./Schedule";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
-import InvertColorsIcon from "@mui/icons-material/InvertColors";
-import InvertColorsOffIcon from "@mui/icons-material/InvertColorsOff";
+// import InvertColorsIcon from "@mui/icons-material/InvertColors";
+// import InvertColorsOffIcon from "@mui/icons-material/InvertColorsOff";
 import rotorIcon from "./i-1.png";
-import rotorDark from "./i-2.png";
+// import rotorDark from "./i-2.png";
 import sprayIcon from "./j-3.png";
-import sprayDark from "./j-4.png";
+// import sprayDark from "./j-4.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoffee, faCalendar, faDroplet, faDropletSlash } from "@fortawesome/free-solid-svg-icons";
 

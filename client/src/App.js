@@ -1,16 +1,17 @@
 import "./App.css";
-import Main from "./components/Nav";
-import Location from "./components/Location";
+// import Main from "./components/Nav";
+// import Location from "./components/Location";
 import Forecast from "./components/Forecast";
 import { useState, useEffect } from "react";
 // import { Routes, Route } from 'react-router-dom';
-import Login from "./components/Login";
+// import Login from "./components/Login";
 // import Nav from "./components/Nav";
 import Signup from "./components/Signup";
-import Schedule from "./components/Schedule";
+// import Schedule from "./components/Schedule";
 import ETAndCycle from "./components/ETAndCycle";
-import Time from "./components/Time";
+// import Time from "./components/Time";
 import Navbar from "./components/Navbar";
+import { ListItem } from "@mui/material";
 
 function App() {
   const [local, setLocal] = useState(["Kingwood", "77345"]);
@@ -19,11 +20,11 @@ function App() {
   const [latLon, setLatLon] = useState([]);
   const [lat, setLat] = useState([latLon.latitude]);
   const [lon, setLon] = useState([latLon.longitude]);
+  const [ETData, setETData] = useState([]);
   const [APIKeyForecast, setAPIKeyForecast] = useState(
     "00abd67100886d6a01f4694628c12152"
   );
   const [user, setUser] = useState(null);
-
 
   // let shortLat = Math.round((latLon.lattitude) * 100) / 100
   // console.log(shortLat)
@@ -31,7 +32,6 @@ function App() {
   // constol.log(latLon.latitude)
   // console.log(lat)
   // console.log(lon)
-  
 
   function getCord() {
     fetch(
@@ -75,30 +75,38 @@ function App() {
     <Forecast local={local} key={forecast.id} forecast={forecast} temp={temp} />
   ));
 
+  function getCet() {
+    fetch("http://localhost:3000/cets")
+      .then((response) => response.json())
+      .then((results) => setETData(results));
+  }
+  useEffect(getCet, []);
+
+  // useEffect(findCity, []);
+  const [sessionCity, setSessionCity] = useState([]);
 
   useEffect(() => {
     // auto-login
     fetch("http://localhost:3000/me").then((r) => {
       if (r.ok) {
-        r.json().then((user) => setUser(user));
+        r.json()
+          .then((user) => setUser(user))
+          .then(() => findCity);
       }
     });
   }, []);
+  if (!user) return <Signup onLogin={setUser} />;
 
-  // if (!user) return <Signup onLogin={setUser} />;
-
-  // const handleAddressChange = (passData) => {
-  //   console.log(passData);
-  // };
-
-
-  function getCet() {
-    fetch("http://localhost:3000/cets")
-      .then((response) => response.json())
-      .then((results) => console.log(results));
+  function findCity(user) {
+    console.log(user);
+    const usersCity = ETData.find((level) => level.city.name === user.city.name);
+    setSessionCity(usersCity);
   }
-  useEffect(getCet, []);
-  
+  console.log(user);
+  console.log(sessionCity);
+  console.log(user.city.name);
+  console.log(ETData[0].city.name);
+
   return (
     <div className="main">
       {/* <Nav /> */}

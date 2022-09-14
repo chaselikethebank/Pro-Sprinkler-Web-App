@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 // import SearchBar from "material-ui-search-bar";
 import React from "react";
 import { styled, alpha } from "@mui/material/styles";
@@ -10,15 +10,15 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import MenuIcon from "@mui/icons-material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
+// import SearchIcon from "@mui/icons-material/Search";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Grow from "@mui/material/Grow";
 import Paper from "@mui/material/Paper";
 import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
-import Stack from "@mui/material/Stack";
-import { Button } from "@mui/material";
+// import Stack from "@mui/material/Stack";
+// import { Button } from "@mui/material";
 
 
 function Nav({ onAddressChange }) {
@@ -33,9 +33,9 @@ function Nav({ onAddressChange }) {
   //   onAddressChange(passData);
   // };
 
-  function handleSearch(e) {
+  // function handleSearch(e) {
    
-    console.log(e.target.value);
+  //   console.log(e.target.value);
     // setLocation(e.target.value);
 
     // setErrors([]);
