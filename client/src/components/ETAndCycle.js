@@ -27,7 +27,6 @@ function ETAndCycle() {
   const calendar = <FontAwesomeIcon icon={faCalendar} />
   const waterIcon = <FontAwesomeIcon icon={faDroplet} />
   const waterSlashIcon = <FontAwesomeIcon icon={faDropletSlash} />
-  console.log(calendar)
   const element = <FontAwesomeIcon icon={faCoffee} />
 
   const APIET = "www.google.com";
@@ -45,15 +44,15 @@ function ETAndCycle() {
   let rotor = (((weekET / 0.625) * 60) / cyclesPerWeek).toFixed(0);
   let spray = (((weekET / 1.5) * 60) / cyclesPerWeek).toFixed(0);
 
-  console.log(seasonal)
+  // console.log(seasonal)
 
   useEffect(getSeasonal, [])
   function getSeasonal () {
     let big = ((Object.entries(ETPerMonthInHouston))[6][1])
-    console.log(big)
+    // console.log(big)
     let small = thisMonthsET[0][1]
     let seasonalMathLong = ((small)/(big)*100)
-    console.log(seasonalMathLong)
+    // console.log(seasonalMathLong)
     setSeasonal(roundNearest5(seasonalMathLong))
     function roundNearest5(num) { 
       return Math.round(num / 5) * 5;
@@ -73,21 +72,7 @@ function ETAndCycle() {
   }
   useEffect(setET, []);
 
-  // function getET() {
-  //   fetch((APIET),
-  //     {
-  //       method: "GET",
-  //       headers: {
-  //         apiKey:
-  //           {APIKey},
-  //         "Content-Type": "application/json",
-  //       },
-  //     }
-  //   )
-  //     .then((response) => response.json())
-  //     .then((result) => setET(result));
-  // }
-  // useEffect(getET, []);
+  
 
   // function Math () {
   // {ET}
@@ -153,7 +138,7 @@ function ETAndCycle() {
       •
     </Box>
   );
-  console.log(rotor, rotorDark, spray, sprayDark)
+  // console.log(rotor, rotorDark, spray, sprayDark)
   return (
     
     <div className="historical">
@@ -176,9 +161,8 @@ function ETAndCycle() {
               color="text.secondary"
               gutterBottom
             >
-              {calendar} {month}
+              {calendar}  {month}
 
-              <FontAwesomeIcon icon="fa-duotone fa-calendar-week" />
             </Typography>
             <Typography variant="h5" component="div" sx={{ mb: 1.5 }}>
               Houston               (get user city)
@@ -236,57 +220,7 @@ function ETAndCycle() {
             {/* <Button size="small">Learn More</Button> */}
           </CardActions>
         </Card>
-        {/* <ul>
-          <li>
-            if historical ET / in {month} is {monthET}",
-            <p></p>
-            then, {cropET}" is the ET X crop coefficient,
-            <p></p>
-            making the weekly ET {weekET}" / week.
-            <p></p>
-            
-          </li>
-        </ul> */}
-        {/* Your pro sprinkler schedule for August has 4 watering events per week:
-      
-
-      <ul>
-      <br></br>
-      <p></p>
-      <p>
-        <li>
-        Monday: Water @ Sunrise 
-        </li>
-      </p>
-      <p>
-        <li>
-        Tuesday: Non-Event
-        </li>
-      </p>
-      <p>
-        <li>
-        Wednesday: Water @ Sunrise 
-        </li>
-      </p>
-      <p>
-        <li>
-        Thursday: Non-Event
-        </li>
-      </p>
-      <p>
-        <li>
-        Friday: Water @ Sunrise 
-        </li>
-      </p>
-      <p>
-        <li>
-        Sunday: Water @ Sunrise
-        </li>
-      </p>
-      </ul> */}
-        <p></p>
-        <p></p>
-        <br></br>
+       
 
         {/* <Schedule /> */}
       </Box>

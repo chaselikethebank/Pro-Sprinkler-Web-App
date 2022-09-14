@@ -31,6 +31,7 @@ function App() {
   // constol.log(latLon.latitude)
   // console.log(lat)
   // console.log(lon)
+  
 
   function getCord() {
     fetch(
@@ -89,6 +90,15 @@ function App() {
   // const handleAddressChange = (passData) => {
   //   console.log(passData);
   // };
+
+
+  function getCet() {
+    fetch("http://localhost:3000/cets")
+      .then((response) => response.json())
+      .then((results) => console.log(results));
+  }
+  useEffect(getCet, []);
+  
   return (
     <div className="main">
       {/* <Nav /> */}

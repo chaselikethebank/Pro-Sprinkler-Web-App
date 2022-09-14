@@ -27,7 +27,7 @@ const [placeArt, setPlaceArt] = useState("data:image/png;base64,iVBORw0KGgoAAAAN
     borderRadius: "sm",
     boxShadow: "sm",
   }}>
-
+{/* 
         <CardMedia
      component="img"
         heigh="350"
@@ -48,17 +48,13 @@ const [placeArt, setPlaceArt] = useState("data:image/png;base64,iVBORw0KGgoAAAAN
         <p>{forecast[0].description}</p>
         <p>high of {temp.main.temp_max}°F / low of {temp.main.temp_min}°F</p>
         <p>Humidity: {temp.main.humidity}%</p>
-        {/* {link ? (
-          <p>
-            <a href={link}>Link</a>
-          </p>
-        ) : null} */}
+       
         </Typography>
       </section>
 
       <footer className="extra">
     
-      </footer>
+      </footer> */}
     </Box>;
 }
 
