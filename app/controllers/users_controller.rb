@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     def index
       render json: User.all
     end
+  #add stuf fhere 
   
     # GET '/me'
     def show

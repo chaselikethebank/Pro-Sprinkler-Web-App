@@ -14,29 +14,21 @@ import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 import InvertColorsIcon from "@mui/icons-material/InvertColors";
 import InvertColorsOffIcon from "@mui/icons-material/InvertColorsOff";
-import rotorIcon from "./i-1.png";
-import rotorDark from "./i-2.png";
-import sprayIcon from "./j-3.png";
-import sprayDark from "./j-4.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoffee, faCalendar, faDroplet, faDropletSlash } from "@fortawesome/free-solid-svg-icons";
+import rotor from "./i-1.png"
+import rotorDark from "./i-2.png"
+import spray from "./j-3.png"
+import sprayDark from "./j-4.png"
+
 
 
 function ETAndCycle() {
-  
-  const calendar = <FontAwesomeIcon icon={faCalendar} />
-  const waterIcon = <FontAwesomeIcon icon={faDroplet} />
-  const waterSlashIcon = <FontAwesomeIcon icon={faDropletSlash} />
-  console.log(calendar)
-  const element = <FontAwesomeIcon icon={faCoffee} />
-
   const APIET = "www.google.com";
   const APIKey =
     "OTc0MDk4N2VjN2FhNDZhMTkyYzhiMDFmNWIzMDlhNDU6ODVjYWM1ZWMtMWVhNi00NjdhLTkzZGYtMzdlZjdmYzNkYmYx";
 
   const [monthETState, setMonthETState] = useState();
   // const [ET, setET] = useState(.9)
-  const [seasonal, setSeasonal] = useState(null);
+  const [seasonal, setSeasonal] = useState(null)
 
   let monthET = monthETState; //inches
   let cropET = (monthET * 0.65).toFixed(2);
@@ -44,24 +36,18 @@ function ETAndCycle() {
   let cyclesPerWeek = 4;
   let rotor = (((weekET / 0.625) * 60) / cyclesPerWeek).toFixed(0);
   let spray = (((weekET / 1.5) * 60) / cyclesPerWeek).toFixed(0);
-  console.log(seasonal);
 
-  function setET() {
-    setMonthETState(thisMonthsET[0][1]);
-  }
-  useEffect(setET, []);
+  console.log(seasonal)
 
-  useEffect(getSeasonal, []);
-  function getSeasonal() {
-    console.log(ETPerMonthInHouston);
-    let big = Object.entries(ETPerMonthInHouston)[6][1];
-    console.log(big);
-    console.log(monthETState);
-    let small = thisMonthsET[0][1];
-    let seasonalMathLong = (small / big) * 100;
-    console.log(seasonalMathLong);
-    setSeasonal(roundNearest5(seasonalMathLong));
-    function roundNearest5(num) {
+  useEffect(getSeasonal, [])
+  function getSeasonal () {
+    let big = ((Object.entries(ETPerMonthInHouston))[6][1])
+    console.log(big)
+    let small = (monthETState)
+    let seasonalMathLong = ((small)/(big)*100)
+    console.log(seasonalMathLong)
+    setSeasonal(roundNearest5(seasonalMathLong))
+    function roundNearest5(num) { 
       return Math.round(num / 5) * 5;
     }
   }
@@ -73,6 +59,11 @@ function ETAndCycle() {
     textAlign: "center",
     color: theme.palette.text.secondary,
   }));
+
+  function setET() {
+    setMonthETState(thisMonthsET[0][1]);
+  }
+  useEffect(setET, []);
 
   // function getET() {
   //   fetch((APIET),
@@ -127,10 +118,10 @@ function ETAndCycle() {
     October: 4.5,
     November: 2.2,
     December: 1.3,
-  };
+  }
 
   const ETsAsArray = Object.entries(ETPerMonthInHouston);
-
+  
   const filter = ETsAsArray.filter(([key, value]) => typeof value === "string");
   // console.log(filter)
 
@@ -143,6 +134,8 @@ function ETAndCycle() {
   // console.log((thisMonthsET[0][1]));
 
   //seasonal math
+  
+  
 
   const bull = (
     <Box
@@ -152,8 +145,11 @@ function ETAndCycle() {
       •
     </Box>
   );
+  console.log(rotor, rotorDark, spray, sprayDark)
   return (
+    
     <div className="historical">
+      
       <Box
         m={5}
         pt={5}
@@ -165,36 +161,29 @@ function ETAndCycle() {
           fontOpticalSizing: "auto",
         }}
       >
-        <Card className="card" sx={{ minWidth: 295, maxWidth: "50%" }}>
+        <Card className="card" sx={{ minWidth: 275, maxWidth: "50%" }}>
           <CardContent>
             <Typography
               sx={{ fontSize: 14 }}
               color="text.secondary"
               gutterBottom
-            > {calendar} {month}
-             
-              
-              <FontAwesomeIcon icon="fa-duotone fa-calendar-week" />
+            >
+              {month}
             </Typography>
             <Typography variant="h5" component="div" sx={{ mb: 1.5 }}>
               Houston
-              (get user city)
             </Typography>
-            <br></br>
-            <Box align="center">
-              <Typography variant="body" sx={{ mb: 1 }} >
-                <img src={rotorIcon} style={{ width: "auto", height: 105 }} />{" "}
-                Set rotor zones to {rotor} min per cycle
-                <p></p>
-                <img src={sprayIcon} style={{ width: "auto", height: 105 }} />
-                Set spray zones to {spray} min per cycle
-              </Typography>
+            <Box align="left">
+            <Typography variant="body2" sx={{ mb: 1 }} color="text.secondary">
+              Rotor zones @ {rotor} minutes
+              <p></p>
+              Spray zones @ {spray} minutes
+            </Typography>
             </Box>
             <Box align="center">
-              <Typography m={3} sx={{ mb: 2 }} color="text.secondary">
-                {/* Your Schedule: */}
-                <br></br>
-              </Typography>
+            <Typography m={3} sx={{ mb: 2 }} color="text.secondary">
+              {/* Your Schedule: */}
+            </Typography>
             </Box>
             <Typography>
               <Stack
@@ -203,13 +192,13 @@ function ETAndCycle() {
                 divider={<Divider orientation="horizontal" flexItem />}
                 spacing={2}
               >
-                <Item>Monday: {waterIcon}</Item>
-                <Item>Tuesday: {waterSlashIcon}</Item>
-                <Item>Wednesday: {waterIcon}</Item>
-                <Item>Thursday: {waterSlashIcon}</Item>
-                <Item>Friday: {waterIcon}</Item>
-                <Item>Saturday: {waterSlashIcon}</Item>
-                <Item>Sunday:{waterIcon}</Item>
+                <Item>Monday: Water icon</Item>
+                <Item>Tuesday: Not Water icon</Item>
+                <Item>Wednesday: Water icon</Item>
+                <Item>Thursday: Not Water icon</Item>
+                <Item>Friday: Water icon</Item>
+                <Item>Saturday: Not Water icon</Item>
+                <Item>Sunday: Water icon</Item>
               </Stack>
               <Box align="center">
                 <Typography
@@ -218,12 +207,10 @@ function ETAndCycle() {
                   sx={{ mb: 1 }}
                   color="text.secondary"
                 >
-                  * or seasonally adjust to{" "}
-                  {
-                    seasonal
-                    //  !== null ? {getSeasonal} : "75"
-                  }
-                  %
+                
+                  * or seasonally adjust to {seasonal
+                  //  !== null ? {getSeasonal} : "75"
+                   }%
                 </Typography>
               </Box>
             </Typography>
