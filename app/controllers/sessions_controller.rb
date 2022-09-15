@@ -14,15 +14,20 @@ class SessionsController < ApplicationController
     end
   
     # DELETE '/logout'
+    # def destroy
+    #   byebug
+    #   current_user = User.find_by(id: session[:user_id])
+    #   if current_user
+    #     session.clear
+    #   else
+    #     render json: { errors: "No active session" }, status: :unauthorized
+    #   end
+    # end
+
     def destroy
-      byebug
-      current_user = User.find_by(id: session[:user_id])
-      if current_user
-        session.clear
-      else
-        render json: { errors: "No active session" }, status: :unauthorized
-      end
-    end
+      session.delete :user_id 
+      head :no_content 
+  end
   
   
   end

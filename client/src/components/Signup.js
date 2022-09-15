@@ -62,7 +62,9 @@ export default function Signup({ setUser, onLogin, ETData }) {
     setPassword("");
     setEmail("");
   }
-
+  console.log(city)
+console.log(email)
+console.log(password)
   function handleSubmit(e) {
     e.preventDefault();
     setErrors([]);
@@ -90,6 +92,7 @@ export default function Signup({ setUser, onLogin, ETData }) {
     setEmail("");
     setCity("")
   }
+
 
   // const imgSize = {
   //   height: 105,
