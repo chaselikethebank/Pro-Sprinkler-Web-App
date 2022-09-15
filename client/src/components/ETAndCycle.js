@@ -49,9 +49,10 @@ function ETAndCycle({ user, sessionMonths }) {
   let rotor = (((weekET / 0.625) * 60) / cyclesPerWeek).toFixed(0);
   let spray = (((weekET / 1.5) * 60) / cyclesPerWeek).toFixed(0);
 
+console.log(user.cet)
   useEffect(getSeasonal, []);
   function getSeasonal() {
-    let big = Object.entries(ETPerMonthInHouston)[6][1];
+    let big = user.cet.July;
     // console.log(big)
     let small = thisMonthsET[0][1];
     let seasonalMathLong = (small / big) * 100;
@@ -105,25 +106,24 @@ function ETAndCycle({ user, sessionMonths }) {
   // }
 
   // hard code for dynamic to month but not dynamic to user, ET reads
-  const ETPerMonthInHouston = {
-    January: 1.0,
-    February: 1.5,
-    March: 2.8,
-    April: 4.5,
-    May: 6.5,
-    June: 7.8,
-    July: 8.2,
-    August: 7.8,
-    September: 1.0,
-    October: 4.5,
-    November: 2.2,
-    December: 1.3,
-  };
+  // const ETPerMonthInHouston = {
+  //   January: 1.0,
+  //   February: 1.5,
+  //   March: 2.8,
+  //   April: 4.5,
+  //   May: 6.5,
+  //   June: 7.8,
+  //   July: 8.2,
+  //   August: 7.8,
+  //   September: 6.0,
+  //   October: 4.5,
+  //   November: 2.2,
+  //   December: 1.3,
+  // };
 
-  const ETsAsArray = Object.entries(ETPerMonthInHouston);
-
+  const ETsAsArray = Object.entries(user.cet);
   const filter = ETsAsArray.filter(([key, value]) => typeof value === "string");
-  // console.log(filter)
+  console.log(ETsAsArray)
 
   let thisMonthsET = ETsAsArray.filter((item) => {
     let currentMonth = monthsAsStrings[d.getMonth()];
@@ -145,7 +145,7 @@ function ETAndCycle({ user, sessionMonths }) {
   );
   // console.log(rotor, rotorDark, spray, sprayDark)
 
-  console.log(user.city.name);
+  // console.log(user.city.name);
 
   return (
     <div className="historical">
@@ -170,7 +170,7 @@ function ETAndCycle({ user, sessionMonths }) {
               {calendar} {month}
             </Typography>
             <Typography variant="h5" component="div" sx={{ mb: 1.5 }}>
-              {user.city.name}
+              {user.cet.city}
             </Typography>
             <br></br>
             <Box align="center">

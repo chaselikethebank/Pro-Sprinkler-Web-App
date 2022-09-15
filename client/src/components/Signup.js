@@ -26,7 +26,7 @@ export default function Signup({ setUser, onLogin, ETData }) {
   // console.log({ email }, { password });
   const [isClicked, setIsClicked] = useState(true);
   const [formCity, setFormCity] =useState([])
-  const [userCity, setUserCity] = useState([])
+  const [cet, setCet] = useState([])
 
 
   console.log(ETData)
@@ -77,8 +77,7 @@ console.log(password)
       body: JSON.stringify({
         email,
         password,
-        city: 4, 
-        userCity
+        cet
         // password_confirmation: passwordConfirmation,
       }),
     }).then((r) => {
@@ -91,7 +90,7 @@ console.log(password)
     });
     setPassword("");
     setEmail("");
-    setCity("")
+    setCet("")
   }
 
 
@@ -156,13 +155,13 @@ console.log(password)
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={userCity}
+          value={cet}
           helperText="JohnWaterfall@gmail.com"
-          onChange={(e) => setCity(e.target.value)}
+          onChange={(e) => setCet(e.target.value)}
         >
-          <MenuItem value={"Houston"}>Houston</MenuItem>
-          <MenuItem value={"Austin"}>Austin</MenuItem>
-          <MenuItem value={"Password"}>Dallas</MenuItem>
+          <MenuItem value={"HoustonET"}>Houston</MenuItem>
+          <MenuItem value={"AustinET"}>Austin</MenuItem>
+          <MenuItem value={"DallasET"}>Dallas</MenuItem>
         </Select>
           {/* <TextField
         label="Zip"
