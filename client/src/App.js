@@ -87,14 +87,24 @@ function App() {
 
   const [sessionMonths, setSessionMonths] = useState([]);
 
+  // useEffect(() => {
+  //   fetch("/me").then((r) => {
+  //     if (r.ok) {
+  //       debugger;
+  //       r.json()
+  //         // .then((user) => setUser(user))
+  //         // .then(() => findCity())
+  //         .then(() => setUser(user));
+  //     }
+  //   });
+  // }, []);
+  
+
   useEffect(() => {
+    // auto-login
     fetch("/me").then((r) => {
       if (r.ok) {
-        debugger;
-        r.json()
-          // .then((user) => setUser(user))
-          // .then(() => findCity())
-          .then(() => setUser(user));
+        r.json().then((user) => setUser(user));
       }
     });
   }, []);

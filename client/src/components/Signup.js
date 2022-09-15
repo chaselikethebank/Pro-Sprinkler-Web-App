@@ -20,7 +20,7 @@ import Select from '@mui/material/Select';
 export default function Signup({ setUser, onLogin, ETData }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   // console.log({ email }, { password });
@@ -62,7 +62,12 @@ export default function Signup({ setUser, onLogin, ETData }) {
     setPassword("");
     setEmail("");
   }
-  // console.log(city)
+  console.log(cet)
+    console.log(email)
+  console.log(password)
+  console.log(passwordConfirmation)
+
+
 console.log(email)
 console.log(password)
   function handleSubmit(e) {
@@ -77,7 +82,8 @@ console.log(password)
       body: JSON.stringify({
         email,
         password,
-        cet
+        password_confirmation: passwordConfirmation,
+        cet_id: cet,
         // password_confirmation: passwordConfirmation,
       }),
     }).then((r) => {
@@ -159,9 +165,19 @@ console.log(password)
           helperText="JohnWaterfall@gmail.com"
           onChange={(e) => setCet(e.target.value)}
         >
-          <MenuItem value={"HoustonET"}>Houston</MenuItem>
-          <MenuItem value={"AustinET"}>Austin</MenuItem>
-          <MenuItem value={"DallasET"}>Dallas</MenuItem>
+          <MenuItem value={"11"}>Houston</MenuItem>
+          <MenuItem value={"13"}>Austin</MenuItem>
+          <MenuItem value={"4"}>Dallas</MenuItem>
+          <MenuItem value={"10"}>San Antonio</MenuItem>
+          <MenuItem value={"5"}>Fort Worth</MenuItem>
+          <MenuItem value={"9"}>San Angelo</MenuItem>
+          <MenuItem value={"2"}>Amarillo</MenuItem>
+          <MenuItem value={"3"}>Abilene</MenuItem>
+          <MenuItem value={"6"}>College Station</MenuItem>
+          <MenuItem value={"8"}>El Paso</MenuItem>
+          <MenuItem value={"12"}>Laredo</MenuItem>
+          
+
         </Select>
           {/* <TextField
         label="Zip"
@@ -194,6 +210,16 @@ console.log(password)
             helperText="Grass1s@lways$er"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            autoComplete="current-password"
+          ></TextField>
+            <TextField
+            label="Password Confirmation"
+            placeholder="Type in here..."
+            varient="soft"
+            required
+            helperText="Grass1s@lways$er"
+            value={passwordConfirmation}
+            onChange={(e) => setPasswordConfirmation(e.target.value)}
             autoComplete="current-password"
           ></TextField>
 

@@ -1,23 +1,11 @@
 class UsersController < ApplicationController
   skip_before_action :authorized
 
-
     def index
-      render json: User.all
+        users= User.all
+        render json: users
     end
-  #add stuf fhere 
-  
-    # GET '/me'
-    def show
-      user = User.find_by(id: params[:id])
-      if user
-        render json: user, serializer: UserSerializer
-      else
-        render json: { error: "Not authorized" }, status: :unauthorized
-      end
-    end
-  
-    # POST '/signup'
+    
     def create
       user = User.create(user_params)
       if user.valid?(params[:password])
@@ -28,16 +16,28 @@ class UsersController < ApplicationController
       end
     end
 
-    def delete
-      user = User.destroy!(user_params)
-      session[:user_id] = user.id
-      render json: user, status: :created
+    def show
+      user = User.find_by(id: params[:id])
+      if user
+        render json: user, serializer: UserSerializer
+      else
+        render json: { error: "Not authorized" }, status: :unauthorized
+      end
+    end
+
+    def show_me
+      user = User.find_by(id: session[:user_id])
+      if user
+        render json: user, serializer: UserSerializer
+      else
+        render json: { error: "Not authorized" }, status: :unauthorized
+      end
     end
   
     private
   
     def user_params
-      params.permit(:cet, :email, :password)
+      params.permit(:cet_id, :email, :password, :password_confirmation, :user)
     end
   end
   
