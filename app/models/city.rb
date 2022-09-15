@@ -1,5 +1,5 @@
 class City < ApplicationRecord
 
-    has_many :users
-    has_many :cets
+    # has_many :users
+    # has_many :cets
 end

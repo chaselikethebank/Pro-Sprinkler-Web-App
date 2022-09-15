@@ -13,7 +13,8 @@ class CreateCets < ActiveRecord::Migration[6.1]
       t.integer :October
       t.integer :November
       t.integer :December
-      t.belongs_to :city, null: false, foreign_key: true
+      t.string :city
+      # , null: false, foreign_key: true
 
       t.timestamps
     end

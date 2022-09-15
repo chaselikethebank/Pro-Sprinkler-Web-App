@@ -88,40 +88,42 @@ function App() {
   const [sessionMonths, setSessionMonths] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/me").then((r) => {
+    fetch("/me").then((r) => {
       if (r.ok) {
-        debugger
+        debugger;
         r.json()
           // .then((user) => setUser(user))
-          .then(() => findCity())
-        .then(()=>console.log(user))
+          // .then(() => findCity())
+          .then(() => setUser(user));
       }
     });
   }, []);
 
-  useEffect(() => {
-findCity()
-  }, [user])
 
-  if (user===null) return <Signup onLogin={setUser} ETData={ETData}/>;
+
+  // useEffect(() => {
+  //   findCity();
+  // }, [user]);
+
+  if (user === null) return <Signup onLogin={setUser} ETData={ETData} />;
 
   console.log(user);
-  function findCity() {
-    console.log(user);
-    const usersCity = ETData.find(
-      (level) => level.city.name === user.city.name
-    );
-    setSessionMonths(usersCity);
-  }
-  console.log(user);
-  console.log(sessionMonths);
-  console.log(user.city.name);
-  console.log(ETData[10].city.name);
-  console.log(ETData)
+  // function findCity() {
+  //   // console.log(user);
+  //   const usersCity = ETData.find(
+  //     (level) => level.city.name === user.city.name
+  //   );
+  //   setSessionMonths(usersCity);
+  // }
+  // console.log(user);
+  // console.log(sessionMonths);
+  // console.log(user.city.name);
+  // console.log(ETData[10].city.name);
+  // console.log(ETData)
 
   return (
     <div className="main">
-      <NewNav setUser={setUser}/>
+      <NewNav setUser={setUser} />
 
       {/* <Nav /> */}
       {/* <Main */}
@@ -132,7 +134,7 @@ findCity()
       {/* {renderForecast} */}
       {/* <Login /> */}
       {/* <Signup onLogin={setUser} /> */}
-      <ETAndCycle user={user} sessionMonths={sessionMonths}/>
+      <ETAndCycle user={user} sessionMonths={sessionMonths} />
       {/* <Schedule /> */}
       {/* <Navbar /> */}
     </div>

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  skip_before_action :authorized
 
 
     def index
@@ -9,18 +9,23 @@ class UsersController < ApplicationController
   
     # GET '/me'
     def show
-      if current_user
-        render json: current_user, status: :ok
+      user = User.find_by(id: params[:id])
+      if user
+        render json: user, serializer: UserSerializer
       else
-        render json: { errors: "No active session" }, status: :unauthorized
+        render json: { error: "Not authorized" }, status: :unauthorized
       end
     end
   
     # POST '/signup'
     def create
-      user = User.create!(user_params)
-      session[:user_id] = user.id
-      render json: user, status: :created
+      user = User.create(user_params)
+      if user.valid?(params[:password])
+        session[:user_id] = user.id
+        render json: user, status: :created
+      else
+        render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+      end
     end
 
     def delete
@@ -32,7 +37,7 @@ class UsersController < ApplicationController
     private
   
     def user_params
-      params.permit(:city, :email, :password)
+      params.permit(:cet, :email, :password)
     end
   end
   

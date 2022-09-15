@@ -26,7 +26,7 @@ export default function Signup({ setUser, onLogin, ETData }) {
   // console.log({ email }, { password });
   const [isClicked, setIsClicked] = useState(true);
   const [formCity, setFormCity] =useState([])
-  const [city, setCity] = useState([])
+  const [userCity, setUserCity] = useState([])
 
 
   console.log(ETData)
@@ -62,7 +62,7 @@ export default function Signup({ setUser, onLogin, ETData }) {
     setPassword("");
     setEmail("");
   }
-  console.log(city)
+  // console.log(city)
 console.log(email)
 console.log(password)
   function handleSubmit(e) {
@@ -77,7 +77,8 @@ console.log(password)
       body: JSON.stringify({
         email,
         password,
-        city
+        city: 4, 
+        userCity
         // password_confirmation: passwordConfirmation,
       }),
     }).then((r) => {
@@ -155,7 +156,7 @@ console.log(password)
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={city}
+          value={userCity}
           helperText="JohnWaterfall@gmail.com"
           onChange={(e) => setCity(e.target.value)}
         >
