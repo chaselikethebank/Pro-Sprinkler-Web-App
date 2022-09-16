@@ -165,17 +165,18 @@ console.log(password)
           helperText="JohnWaterfall@gmail.com"
           onChange={(e) => setCet(e.target.value)}
         >
-          <MenuItem value={"11"}>Houston</MenuItem>
-          <MenuItem value={"13"}>Austin</MenuItem>
-          <MenuItem value={"4"}>Dallas</MenuItem>
-          <MenuItem value={"10"}>San Antonio</MenuItem>
-          <MenuItem value={"5"}>Fort Worth</MenuItem>
-          <MenuItem value={"9"}>San Angelo</MenuItem>
-          <MenuItem value={"2"}>Amarillo</MenuItem>
-          <MenuItem value={"3"}>Abilene</MenuItem>
+           <MenuItem value={"13"}>Austin</MenuItem>
+           <MenuItem value={"3"}>Abilene</MenuItem>
+           <MenuItem value={"2"}>Amarillo</MenuItem>
           <MenuItem value={"6"}>College Station</MenuItem>
+          <MenuItem value={"4"}>Dallas</MenuItem>
           <MenuItem value={"8"}>El Paso</MenuItem>
+          <MenuItem value={"5"}>Fort Worth</MenuItem>
+          <MenuItem value={"11"}>Houston</MenuItem>
           <MenuItem value={"12"}>Laredo</MenuItem>
+          <MenuItem value={"9"}>San Angelo</MenuItem>
+          <MenuItem value={"10"}>San Antonio</MenuItem>
+
           
 
         </Select>
