@@ -10,9 +10,17 @@ import Signup from "./components/Signup";
 // import Schedule from "./components/Schedule";
 import ETAndCycle from "./components/ETAndCycle";
 // import Time from "./components/Time";
-import Navbar from "./components/Navbar";
+import About from "./components/About";
 import { ListItem } from "@mui/material";
 import NewNav from "./components/NewNav";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  Link
+} from 'react-router-dom';
+
 
 function App() {
   const [local, setLocal] = useState(["Kingwood", "77345"]);
@@ -111,13 +119,10 @@ function App() {
 
 
 
-  // useEffect(() => {
-  //   findCity();
-  // }, [user]);
 
   if (user === null) return <Signup setUser={setUser} ETData={ETData} />;
 
-  console.log(user);
+  // console.log(user);
   // function findCity() {
   //   // console.log(user);
   //   const usersCity = ETData.find(
@@ -133,20 +138,16 @@ function App() {
 console.log(user)
   return (
     <div className="main">
-      <NewNav setUser={setUser} />
+    <NewNav setUser={setUser} />
 
-      {/* <Nav /> */}
-      {/* <Main */}
-      {/* // onAddressChange={handleAddressChange} */}
-      {/* /> */}
-      {/* <Time /> */}
-      {/* <Location /> */}
-      {/* {renderForecast} */}
-      {/* <Login /> */}
-      {/* <Signup onLogin={setUser} /> */}
+     <Routes>
+     <Route path="*" element={<Navigate to="/schedule" replace/>} />
+      
+      <Route path="schedule" element={
       <ETAndCycle user={user} sessionMonths={sessionMonths} />
-      {/* <Schedule /> */}
-      {/* <Navbar /> */}
+      }/>
+      <Route path="about" element={<About />} /> 
+      </Routes>
     </div>
   );
 }
