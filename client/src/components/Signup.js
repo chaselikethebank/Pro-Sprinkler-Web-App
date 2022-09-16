@@ -44,17 +44,17 @@ export default function Signup({ setUser, onLogin, ETData }) {
 
   function handleLogin(e) {
     e.preventDefault();
-    setIsLoading(true);
-    fetch("http://localhost:3000/login", {
+    // setIsLoading(true);
+    fetch("/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ email, password }),
     }).then((r) => {
-      setIsLoading(false);
+      // setIsLoading(false);
       if (r.ok) {
-        r.json().then((user) => onLogin(user));
+        r.json().then((user) => setUser(user));
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
@@ -73,8 +73,8 @@ console.log(password)
   function handleSubmit(e) {
     e.preventDefault();
     setErrors([]);
-    setIsLoading(true);
-    fetch("http://localhost:3000/signup", {
+    // setIsLoading(true);
+    fetch("/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -87,9 +87,9 @@ console.log(password)
         // password_confirmation: passwordConfirmation,
       }),
     }).then((r) => {
-      setIsLoading(false);
+      // setIsLoading(false);
       if (r.ok) {
-        r.json().then((email) => onLogin(email));
+        r.json().then((user) => setUser(user));
       } else {
         r.json().then((err) => setErrors(err.errors));
       }

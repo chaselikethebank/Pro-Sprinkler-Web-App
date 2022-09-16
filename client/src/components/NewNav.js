@@ -9,7 +9,7 @@ function NewNav({setUser}) {
         console.log("click")
           fetch("/logout", { method: "DELETE" }).then((r) => {
             if (r.ok) {
-                console.log("clikc")
+                // console.log("clikc")
               setUser(null);
             }
           });

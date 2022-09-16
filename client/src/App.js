@@ -115,7 +115,7 @@ function App() {
   //   findCity();
   // }, [user]);
 
-  if (user === null) return <Signup onLogin={setUser} ETData={ETData} />;
+  if (user === null) return <Signup setUser={setUser} ETData={ETData} />;
 
   console.log(user);
   // function findCity() {
@@ -130,7 +130,7 @@ function App() {
   // console.log(user.city.name);
   // console.log(ETData[10].city.name);
   // console.log(ETData)
-
+console.log(user)
   return (
     <div className="main">
       <NewNav setUser={setUser} />
