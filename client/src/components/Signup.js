@@ -299,7 +299,7 @@ export default function Signup({ setUser, onLogin, ETData }) {
                 Login{" "}
               </Button>
               <p></p>
-              {errors}
+            
             </Typography>
           </div>
           <div></div>
@@ -331,7 +331,7 @@ export default function Signup({ setUser, onLogin, ETData }) {
           borderRadius: "sm",
           boxShadow: "sm",
         }}
-      ></Box>
+      >{errors}</Box>
     </div>
   );
 }
