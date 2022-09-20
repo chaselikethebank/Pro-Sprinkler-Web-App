@@ -1,14 +1,9 @@
 import React from "react";
 import { Box } from "@mui/system";
 import { TextField } from "@mui/material";
-// import CssVarsProvider from "@material-ui/lab";
-// import Sheet from "@material-ui/lab";
 import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
-// import Login from "./Login";
-// import Link from "@mui/material/Link";
 import { useState, useEffect } from "react";
-// import Navbar from "./Navbar";
 import PSLogo from "./PSLogo.jpg";
 import "../App.css";
 import InputLabel from "@mui/material/InputLabel";
@@ -22,12 +17,10 @@ export default function Signup({ setUser, onLogin, ETData }) {
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  // console.log({ email }, { password });
   const [isClicked, setIsClicked] = useState(true);
   const [formCity, setFormCity] = useState([]);
   const [cet, setCet] = useState([]);
 
-  // console.log(ETData);
 
 
   function handleClick() {
@@ -39,7 +32,6 @@ export default function Signup({ setUser, onLogin, ETData }) {
 
   function handleLogin(e) {
     e.preventDefault();
-    // setIsLoading(true);
     fetch("/login", {
       method: "POST",
       headers: {
@@ -47,7 +39,6 @@ export default function Signup({ setUser, onLogin, ETData }) {
       },
       body: JSON.stringify({ email, password }),
     }).then((r) => {
-      // setIsLoading(false);
       if (r.ok) {
         r.json().then((user) => setUser(user));
       } else {
@@ -57,17 +48,10 @@ export default function Signup({ setUser, onLogin, ETData }) {
     setPassword("");
     setEmail("");
   }
-  // console.log(cet);
-  // console.log(email);
-  // console.log(password);
-  // console.log(passwordConfirmation);
-
-  // console.log(email);
-  // console.log(password);
+ 
   function handleSubmit(e) {
     e.preventDefault();
     setErrors([]);
-    // setIsLoading(true);
     fetch("/signup", {
       method: "POST",
       headers: {
@@ -78,10 +62,9 @@ export default function Signup({ setUser, onLogin, ETData }) {
         password,
         password_confirmation: passwordConfirmation,
         cet_id: cet,
-        // password_confirmation: passwordConfirmation,
+       
       }),
     }).then((r) => {
-      // setIsLoading(false);
       if (r.ok) {
         r.json().then((user) => setUser(user));
       } else {
@@ -93,10 +76,7 @@ export default function Signup({ setUser, onLogin, ETData }) {
     setCet("");
   }
 
-  // const imgSize = {
-  //   height: 105,
-  //   width: 105,
-  // };
+
   return (
     <div>
       <Box
@@ -230,9 +210,7 @@ export default function Signup({ setUser, onLogin, ETData }) {
             </Typography>
           </div>
           <div>
-            {/* <Typography variant="caption" align="center">
-        DISCLAIMER OF DAMAGES. <p></p> By signing up and/or loging in you agree that Pro-Sprinkler Web App will not be liable for any damages, loss in material, plant material, bills, fees, or fines and in perpetuity.      
-        </Typography> */}
+           
           </div>
         </Box>
       </div>
@@ -331,7 +309,12 @@ export default function Signup({ setUser, onLogin, ETData }) {
           borderRadius: "sm",
           boxShadow: "sm",
         }}
-      >{errors}</Box>
+      >{errors}
+      <div>
+      <Typography variant="caption" align="center">
+        DISCLAIMER OF DAMAGES. <p></p> By signing up and/or loging in you agree that Pro-Sprinkler will not be liable for any damages, loss in material, plant material, bills, fees, or fines and in perpetuity.      
+        </Typography></div></Box>
+      
     </div>
   );
 }
