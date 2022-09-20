@@ -27,13 +27,8 @@ export default function Signup({ setUser, onLogin, ETData }) {
   const [formCity, setFormCity] = useState([]);
   const [cet, setCet] = useState([]);
 
-  console.log(ETData);
+  // console.log(ETData);
 
-  // function getListofPossibleCities (ETData) {
-  //   const {name, value} = ETData
-  //   setFormCity(formCity => ({...setFormCity, [name]:value}))
-  // }
-  // useEffect(getListofPossibleCities, [])
 
   function handleClick() {
     setIsClicked((isClicked) => !isClicked);
@@ -62,13 +57,13 @@ export default function Signup({ setUser, onLogin, ETData }) {
     setPassword("");
     setEmail("");
   }
-  console.log(cet);
-  console.log(email);
-  console.log(password);
-  console.log(passwordConfirmation);
+  // console.log(cet);
+  // console.log(email);
+  // console.log(password);
+  // console.log(passwordConfirmation);
 
-  console.log(email);
-  console.log(password);
+  // console.log(email);
+  // console.log(password);
   function handleSubmit(e) {
     e.preventDefault();
     setErrors([]);
