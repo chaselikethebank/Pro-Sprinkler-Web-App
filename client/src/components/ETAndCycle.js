@@ -1,23 +1,16 @@
-// HTTP: http://api.weatherbit.io/v2.0/forecast/agweather
 import React from "react";
 import { Box } from "@mui/system";
 import { useState, useEffect } from "react";
-// import Schedule from "./Schedule";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-// import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
-// import InvertColorsIcon from "@mui/icons-material/InvertColors";
-// import InvertColorsOffIcon from "@mui/icons-material/InvertColorsOff";
 import rotorIcon from "./i-1.png";
-// import rotorDark from "./i-2.png";
 import sprayIcon from "./j-3.png";
-// import sprayDark from "./j-4.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCoffee,
@@ -37,8 +30,7 @@ function ETAndCycle({ user, sessionMonths }) {
     "OTc0MDk4N2VjN2FhNDZhMTkyYzhiMDFmNWIzMDlhNDU6ODVjYWM1ZWMtMWVhNi00NjdhLTkzZGYtMzdlZjdmYzNkYmYx";
   console.log(sessionMonths);
   console.log(sessionMonths);
-  // console.log(month);
-  // console.log(sessionMonths[month]);
+
   const [monthETState, setMonthETState] = useState([]);
   const [seasonal, setSeasonal] = useState(null);
 
@@ -49,14 +41,11 @@ function ETAndCycle({ user, sessionMonths }) {
   let rotor = (((weekET / 0.625) * 60) / cyclesPerWeek).toFixed(0);
   let spray = (((weekET / 1.5) * 60) / cyclesPerWeek).toFixed(0);
 
-console.log(user.cet)
   useEffect(getSeasonal, []);
   function getSeasonal() {
     let big = user.cet.July;
-    // console.log(big)
     let small = thisMonthsET[0][1];
     let seasonalMathLong = (small / big) * 100;
-    // console.log(seasonalMathLong)
     setSeasonal(roundNearest5(seasonalMathLong));
     function roundNearest5(num) {
       return Math.round(num / 5) * 5;
@@ -93,47 +82,15 @@ console.log(user.cet)
   const d = new Date();
   let month = monthsAsStrings[d.getMonth()];
 
-  // useEffect(() => {
-  //   usersCitysETBasedOnWhatMonthItCurrentlyIs()
-  //     }, [month])
-
-  // function usersCitysETBasedOnWhatMonthItCurrentlyIs () {
-  //   const thisCitysMonth = sessionMonths.find(
-  //     (m) => m === month
-  //   );
-  //   console.log(thisCitysMonth)
-  //   monthETState(thisCitysMonth.value)
-  // }
-
-  // hard code for dynamic to month but not dynamic to user, ET reads
-  // const ETPerMonthInHouston = {
-  //   January: 1.0,
-  //   February: 1.5,
-  //   March: 2.8,
-  //   April: 4.5,
-  //   May: 6.5,
-  //   June: 7.8,
-  //   July: 8.2,
-  //   August: 7.8,
-  //   September: 6.0,
-  //   October: 4.5,
-  //   November: 2.2,
-  //   December: 1.3,
-  // };
-
   const ETsAsArray = Object.entries(user.cet);
   const filter = ETsAsArray.filter(([key, value]) => typeof value === "string");
-  console.log(ETsAsArray)
+  console.log(ETsAsArray);
 
   let thisMonthsET = ETsAsArray.filter((item) => {
     let currentMonth = monthsAsStrings[d.getMonth()];
-    // console.log(item[0])
-    // console.log(currentMonth)
     return item[0].toLowerCase().includes(currentMonth.toLowerCase());
   });
-  // console.log((thisMonthsET[0][1]));
-
-  //seasonal math
+  
 
   const bull = (
     <Box
@@ -143,9 +100,7 @@ console.log(user.cet)
       •
     </Box>
   );
-  // console.log(rotor, rotorDark, spray, sprayDark)
 
-  // console.log(user.city.name);
 
   return (
     <div className="historical">
@@ -213,7 +168,6 @@ console.log(user.cet)
                   * or <a href={seasonalLink}>seasonally adjust</a> to{" "}
                   {
                     seasonal
-                    //  !== null ? {getSeasonal} : "75"
                   }
                   %
                 </Typography>
@@ -221,11 +175,9 @@ console.log(user.cet)
             </Typography>
           </CardContent>
           <CardActions>
-            {/* <Button size="small">Learn More</Button> */}
           </CardActions>
         </Card>
 
-        {/* <Schedule /> */}
       </Box>
     </div>
   );

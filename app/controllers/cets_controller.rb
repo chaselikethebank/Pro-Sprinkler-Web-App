@@ -4,13 +4,7 @@ class CetsController < ApplicationController
         render json: Cet.all
       end
 
-       # def show
-      #   if current_cet
-      #     render json: cet, status: :ok
-      #   else
-      #     render json: { errors: "No CET Data" }, status: :unauthorized
-      #   end
-      # end
+   
 
 
 end
