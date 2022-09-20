@@ -11,11 +11,10 @@ import { useState, useEffect } from "react";
 // import Navbar from "./Navbar";
 import PSLogo from "./PSLogo.jpg";
 import "../App.css";
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 
 export default function Signup({ setUser, onLogin, ETData }) {
   const [email, setEmail] = useState("");
@@ -25,12 +24,10 @@ export default function Signup({ setUser, onLogin, ETData }) {
   const [isLoading, setIsLoading] = useState(false);
   // console.log({ email }, { password });
   const [isClicked, setIsClicked] = useState(true);
-  const [formCity, setFormCity] =useState([])
-  const [cet, setCet] = useState([])
+  const [formCity, setFormCity] = useState([]);
+  const [cet, setCet] = useState([]);
 
-
-  console.log(ETData)
- 
+  console.log(ETData);
 
   // function getListofPossibleCities (ETData) {
   //   const {name, value} = ETData
@@ -40,6 +37,9 @@ export default function Signup({ setUser, onLogin, ETData }) {
 
   function handleClick() {
     setIsClicked((isClicked) => !isClicked);
+    setPassword("");
+    setEmail("");
+    setCet("");
   }
 
   function handleLogin(e) {
@@ -62,14 +62,13 @@ export default function Signup({ setUser, onLogin, ETData }) {
     setPassword("");
     setEmail("");
   }
-  console.log(cet)
-    console.log(email)
-  console.log(password)
-  console.log(passwordConfirmation)
+  console.log(cet);
+  console.log(email);
+  console.log(password);
+  console.log(passwordConfirmation);
 
-
-console.log(email)
-console.log(password)
+  console.log(email);
+  console.log(password);
   function handleSubmit(e) {
     e.preventDefault();
     setErrors([]);
@@ -96,9 +95,8 @@ console.log(password)
     });
     setPassword("");
     setEmail("");
-    setCet("")
+    setCet("");
   }
-
 
   // const imgSize = {
   //   height: 105,
@@ -106,18 +104,18 @@ console.log(password)
   // };
   return (
     <div>
-        <Box
-          sx={{
-            my: 6,
-            mb: 2,
-            display: 'flex',
-            flexDirection: { xs: 'column', md: 'row' },
-            alignItems: 'center',
-          }}
-        >
-          <img src={PSLogo} />
-        </Box>
-      
+      <Box
+        sx={{
+          my: 6,
+          mb: 2,
+          display: "flex",
+          flexDirection: { xs: "column", md: "row" },
+          alignItems: "center",
+        }}
+      >
+        <img src={PSLogo} />
+      </Box>
+
       <div style={isClicked ? { display: "none" } : { display: "flex" }}>
         <Box
           sx={{
@@ -158,28 +156,25 @@ console.log(password)
             helperText="Kingwood"
           ></TextField> */}
           <InputLabel id="demo-simple-select-label">City</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={cet}
-          helperText="JohnWaterfall@gmail.com"
-          onChange={(e) => setCet(e.target.value)}
-        >
-           <MenuItem value={"1"}>Austin</MenuItem>
-           <MenuItem value={"3"}>Abilene</MenuItem>
-           <MenuItem value={"2"}>Amarillo</MenuItem>
-          <MenuItem value={"7"}>College Station</MenuItem>
-          <MenuItem value={"4"}>Dallas</MenuItem>
-          <MenuItem value={"8"}>El Paso</MenuItem>
-          <MenuItem value={"5"}>Fort Worth</MenuItem>
-          <MenuItem value={"11"}>Houston</MenuItem>
-          <MenuItem value={"12"}>Laredo</MenuItem>
-          <MenuItem value={"9"}>San Angelo</MenuItem>
-          <MenuItem value={"10"}>San Antonio</MenuItem>
-
-          
-
-        </Select>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={cet}
+            helperText="JohnWaterfall@gmail.com"
+            onChange={(e) => setCet(e.target.value)}
+          >
+            <MenuItem value={"1"}>Austin</MenuItem>
+            <MenuItem value={"3"}>Abilene</MenuItem>
+            <MenuItem value={"2"}>Amarillo</MenuItem>
+            <MenuItem value={"7"}>College Station</MenuItem>
+            <MenuItem value={"4"}>Dallas</MenuItem>
+            <MenuItem value={"8"}>El Paso</MenuItem>
+            <MenuItem value={"5"}>Fort Worth</MenuItem>
+            <MenuItem value={"11"}>Houston</MenuItem>
+            <MenuItem value={"12"}>Laredo</MenuItem>
+            <MenuItem value={"9"}>San Angelo</MenuItem>
+            <MenuItem value={"10"}>San Antonio</MenuItem>
+          </Select>
           {/* <TextField
         label="Zip"
         placeholder="Type in here..."
@@ -205,6 +200,7 @@ console.log(password)
           ></TextField>
           <TextField
             label="Password"
+            type="password"
             placeholder="Type in here..."
             varient="soft"
             required
@@ -213,8 +209,9 @@ console.log(password)
             onChange={(e) => setPassword(e.target.value)}
             autoComplete="current-password"
           ></TextField>
-            <TextField
+          <TextField
             label="Password Confirmation"
+            type="password"
             placeholder="Type in here..."
             varient="soft"
             required
@@ -238,10 +235,9 @@ console.log(password)
             </Typography>
           </div>
           <div>
-          {/* <Typography variant="caption" align="center">
+            {/* <Typography variant="caption" align="center">
         DISCLAIMER OF DAMAGES. <p></p> By signing up and/or loging in you agree that Pro-Sprinkler Web App will not be liable for any damages, loss in material, plant material, bills, fees, or fines and in perpetuity.      
         </Typography> */}
-            
           </div>
         </Box>
       </div>
@@ -267,7 +263,6 @@ console.log(password)
             boxShadow: "sm",
           }}
         >
-          
           <Typography variant="h4" align="center" sx={{ color: "black" }}>
             <div>Hello Again</div>
           </Typography>
@@ -286,6 +281,7 @@ console.log(password)
           ></TextField>
           <TextField
             label="Password"
+            type="password"
             placeholder="Type in here..."
             varient="soft"
             required
@@ -293,10 +289,7 @@ console.log(password)
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             autoComplete="current-password"
-          
-          >
-
-          </TextField>
+          ></TextField>
 
           {/* </CssVarsProvider>     */}
           <div>
@@ -318,39 +311,35 @@ console.log(password)
         </Box>
       </div>
       {/* <button className="center" </button> */}
-      <Typography align="center" level="body2" sx={{mb: 8,}}>
+      <Typography align="center" level="body2" sx={{ mb: 8 }}>
         <Button onClick={handleClick}>
-          {isClicked ? "I Need to create an account" : "I Already have an account"}
+          {isClicked
+            ? "I Need to create an account"
+            : "I Already have an account"}
         </Button>
         {/* <a href={<Login />}>Login</a> */}
       </Typography>
       <Box
-      sx={{
-        maxWidth: 350,
-        mx: "auto",
-        my: 2,
-        mb: -8,
-        py: 2,
-        px: 5,
-        display: "grid",
-        display: "flex",
-        align: "center",
-        flexDirection: "column",
-        flexWrap: "wrap",
-        gap: 4,
-        borderRadius: "sm",
-        boxShadow: "sm",
-      }}
-      >
-      
-        </Box>
+        sx={{
+          maxWidth: 350,
+          mx: "auto",
+          my: 2,
+          mb: -8,
+          py: 2,
+          px: 5,
+          display: "grid",
+          display: "flex",
+          align: "center",
+          flexDirection: "column",
+          flexWrap: "wrap",
+          gap: 4,
+          borderRadius: "sm",
+          boxShadow: "sm",
+        }}
+      ></Box>
     </div>
   );
 }
-
-
-
-
 
 //password "view"
 // import InputLabel from '@mui/material/InputLabel';
@@ -361,17 +350,15 @@ console.log(password)
 // import Visibility from '@mui/icons-material/Visibility';
 // import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-
-
-  // endAdornment={
-            //   <InputAdornment position="end">
-            //     <IconButton
-            //       aria-label="toggle password visibility"
-            //       onClick={handleClickShowPassword}
-            //       onMouseDown={handleMouseDownPassword}
-            //       edge="end"
-            //     >
-            //       {values.showPassword ? <VisibilityOff /> : <Visibility />}
-            //     </IconButton>
-            //   </InputAdornment>
-            // }
+// endAdornment={
+//   <InputAdornment position="end">
+//     <IconButton
+//       aria-label="toggle password visibility"
+//       onClick={handleClickShowPassword}
+//       onMouseDown={handleMouseDownPassword}
+//       edge="end"
+//     >
+//       {values.showPassword ? <VisibilityOff /> : <Visibility />}
+//     </IconButton>
+//   </InputAdornment>
+// }
